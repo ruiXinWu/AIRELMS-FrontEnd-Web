@@ -277,9 +277,9 @@ export default {
       if (this.subState) {
         return false;
       }
-      if (!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(this.pobj.mobile.trim())) || this.pobj.mobile.trim().length !== 11) {
+      if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(this.pobj.mobile.trim()))) {
         this.$msgBox({
-          content: '请输入正确手机',
+          content: '请输入正确邮箱',
           isShowCancelBtn: false
         }).catch(() => {})
         return false;
