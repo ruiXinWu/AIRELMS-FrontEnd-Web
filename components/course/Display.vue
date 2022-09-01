@@ -5,8 +5,10 @@
     <div class="detail_content">
       <div class="detail_body">
         <ul class="detail_header clearfix">
-          <li><nuxt-link :to="{name: 'index'}">首页</nuxt-link><span>></span></li>
-          <li><nuxt-link :to="{name: 'list'}">录播中心</nuxt-link><span>></span></li>
+          <!--<li><nuxt-link :to="{name: 'index'}">首页</nuxt-link><span>></span></li>-->
+          <li><nuxt-link :to="{name: 'index'}">Home</nuxt-link><span>></span></li>
+          <!--<li><nuxt-link :to="{name: 'list'}">录播中心</nuxt-link><span>></span></li>-->
+          <li><nuxt-link :to="{name: 'list'}">Courses</nuxt-link><span>></span></li>
           <li>{{courseInfo.courseName}}</li>
         </ul>
         <div class="clearfix">
@@ -18,25 +20,32 @@
             <p>{{courseInfo.courseName}}</p>
             <div class="view_price">
               <div>
-                价格:<span v-if="!courseInfo.isFree">￥{{courseInfo.courseOriginal ? courseInfo.courseOriginal.toFixed(2) : '0.00'}}</span>
-                <span v-else>免费</span>
+                Price:<span v-if="!courseInfo.isFree">${{courseInfo.courseOriginal ? courseInfo.courseOriginal.toFixed(2) : '0.00'}}</span>
+                <!--价格:<span v-if="!courseInfo.isFree">${{courseInfo.courseOriginal ? courseInfo.courseOriginal.toFixed(2) : '0.00'}}</span>-->
+                <!--<span v-else>免费</span>-->
+                <span v-else>Free</span>
               </div>
             </div>
             <div class="view_teacher">
-              <span class="text_b">讲师:</span>{{courseInfo.lecturer.lecturerName}}
+              <!--<span class="text_b">讲师:</span>{{courseInfo.lecturer.lecturerName}}-->
+              <span class="text_b">Instructor:</span>{{courseInfo.lecturer.lecturerName}}
             </div>
             <!-- <div class="view_teacher mgt20" v-else>
               <span class="text_b">有效期:</span>永久
             </div> -->
             <div class="view_teacher mgt20">
-              <span class="text_b">购买人数:</span>{{courseInfo.countBuy}} 人
+              <!--<span class="text_b">购买人数:</span>{{courseInfo.countBuy}} 人-->
+              <span class="text_b">Selling amount:</span>{{courseInfo.countBuy}}
             </div>
             <div class="foot_box">
               <div class="study_num">
-                <span class="iconfont mgr10">&#xe60a;</span>{{courseInfo.countStudy}} 人已学习
+                <!--<span class="iconfont mgr10">&#xe60a;</span>{{courseInfo.countStudy}} 人已学习-->
+                <span class="iconfont mgr10">&#xe60a;</span>{{courseInfo.countStudy}} already enrolled
               </div>
-              <button class="buy_btn" v-if="courseInfo.isFree && !isLogin" @click="goLogin">登录观看</button>
-              <button class="buy_btn" id="buyBtn" v-else @click="buyCourse">立即购买</button>
+              <button class="buy_btn" v-if="courseInfo.isFree && !isLogin" @click="goLogin">Login In First</button>
+              <!--<button class="buy_btn" v-if="courseInfo.isFree && !isLogin" @click="goLogin">登录观看</button>-->
+              <!--<button class="buy_btn" id="buyBtn" v-else @click="buyCourse">立即购买</button>-->
+              <button class="buy_btn" id="buyBtn" v-else @click="buyCourse">Purchase Now</button>
             </div>
             <!-- <a :class="{collect_btn: true, share: true, c_red: isShare}" href="javascript:"><span class="iconfont">&#xe610;</span>&nbsp;分享</a> -->
           </div>
@@ -79,7 +88,8 @@ export default {
     buyCourse (event) {
       if (!this.isLogin) {
         this.$msgBox({
-          content: '请登录后再购买',
+          //content: '请登录后再购买',
+          content:'Log In First',
           isShowCancelBtn: false
         }).then(() => {
           this.$store.dispatch('REDIRECT_LOGIN');
@@ -99,7 +109,7 @@ export default {
 
 <style lang="scss" rel="stylesheet/scss">
   .detail_content {
-    background: rgb(51, 51, 51);
+    background: rgb(7, 95, 237);
     .detail_body {
       width: 1200px;
       margin: 0 auto;
@@ -142,20 +152,20 @@ export default {
     }
     .buy_btn {
       display: block;
-      width: 136px;
-      height: 36px;
-      color: #fff;
-      background: #D51423;
+      width: 156px;
+      height: 46px;
+      color: rgb(7, 95, 237);
+      background: #fff;
       border: none;
       border-radius: 6px;
       line-height: 36px;
       text-align: center;
       font-size: 14px;
       // position: absolute;
-      // bottom: 0px;
+      bottom: 15px;
       &:hover {
         text-decoration: none;
-        color: #fff;
+        color: rgb(7, 95, 237);
         cursor: pointer;
       }
     }
@@ -163,7 +173,7 @@ export default {
       float: right;
       height: 36px;
       line-height: 36px;
-      color: #999;
+      color: #fff;
       font-size: 14px;
     }
     .huabei {
@@ -181,14 +191,14 @@ export default {
     }
   }
   .view_price {
-    border-bottom: 1px solid rgb(102, 102, 102);
+    border-bottom: 1px solid #fff;
     padding-bottom: 10px;
-    color: rgb(102, 102, 102);
+    color: #fff;
     font-size: 14px;
     margin: 20px 0;
     span {
       font-size: 24px;
-      color: #D51423;
+      color: #fff;
       font-weight: bold;
       margin-left: 20px;
     }
@@ -197,7 +207,7 @@ export default {
       font-weight: 400;
     }
     .set_vip {
-      color: #0099FF;
+      color: #fff;
       margin-left: 6px;
     }
     .favo {
@@ -205,8 +215,8 @@ export default {
       display: inline-block;
       height: 14px;
       line-height: 14px;
-      background: #D51423;
-      color: #333;
+      background: #fff;
+      color: #fff;
       padding: 0 8px;
       border-radius: 0 7px 7px 0;
       margin-left: 7px;
@@ -215,7 +225,7 @@ export default {
       background: none;
       border: 1px solid #D51423;
       height: 13px;
-      color: #D51423;
+      color: #fff;
       margin-left: -5px;
       border-radius: 7px 0 0 7px;
     }
@@ -224,11 +234,11 @@ export default {
       border: 1px solid #D51423;
       height: 13px;
       line-height: 14px;
-      color: #D51423;
+      color: #fff;
       padding: 0 5px;
     }
     .big_favo {
-      color: #999;
+      color: #fff;
       font-size: 14px;
       font-weight: 400;
       margin-left: 3px;
@@ -248,7 +258,7 @@ export default {
     }
   }
   .view_teacher {
-    color: rgb(102, 102, 102);
+    color: #fff;
     font-size: 14px;
     .text_b {
       margin-right: 20px;

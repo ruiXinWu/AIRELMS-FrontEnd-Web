@@ -8,11 +8,11 @@
     <ul class="page_dots">
       <span class="dots" v-for="(item, index) in data" :class="{on:index === num}" @mouseenter="num = index" :key="index"></span>
     </ul>
-    <y-class-block :height="height" :classList="classList" />
+    <!--<y-class-block :height="height" :classList="classList" />-->
   </div>
 </template>
 <script>
-import YClassBlock from './ClassBlock'
+//import YClassBlock from './ClassBlock' 删除了ClassBlock分类框
 // import {mapState} from 'vuex'
 export default {
   props: {
@@ -60,9 +60,9 @@ export default {
     // console.log(this.data)
     this.change();
   },
-  components: {
-    YClassBlock
-  }
+ // components: {
+ //   YClassBlock
+ // }
 }
 </script>
 <style lang="scss" scoped>

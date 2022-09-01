@@ -10,8 +10,9 @@
             {{ item.name }}
             <span class="small_text">{{ item.zoneDesc }}</span>
             <nuxt-link :to="{ name: 'list' }" class="fr small_text link_text"
-              >更多课程 ></nuxt-link
+              >More Courses ></nuxt-link
             >
+              <!-- 更多课程-->          
           </div>
         </div>
         <div class="zone_body">

@@ -3,7 +3,8 @@
     <div class="mask" @click="close()"></div>
     <div class="modal_panel image_panel" id="image_panel_importance">
       <div class="modal_head">
-        <span class="fl">视频管理</span>
+        <!--<span class="fl">视频管理</span>-->
+        <span class="fl">Course Video</span>
         <a href="javascript:" @click="close()" class="close iconfont">&#xe616;</a>
       </div>
       <div class="modal_body">
@@ -325,7 +326,7 @@ export default {
     border-bottom: 1px solid #e7e7eb;
     span{
       margin-right: 12px;
-      color: #666;
+      color: rgb(7, 95, 237);
     }
   }
   .modal_foot{
@@ -359,7 +360,7 @@ export default {
       text-align: center;
       line-height: 80px;
       font-size: 50px;
-      color: #999;
+      color: rgb(7, 95, 237);
     }
     .img{
       position: relative;
@@ -377,7 +378,7 @@ export default {
         top: -10px;
         font-size: 18px;
         cursor: pointer;
-        color: #666;
+        color: rgb(7, 95, 237);
       }
       img{
         display: block;
@@ -393,16 +394,16 @@ export default {
         text-overflow: ellipsis;
       }
       .sel{
-        color: #eee;
+        color: rgb(7, 95, 237);
         margin: 0 3px;
       }
       &:hover{
-        border-color: #ed7d03;
+        border-color: rgb(7, 95, 237);
         .oper{
           display: block;
         }
         .icon {
-          color: #ed7d03;
+          color: rgb(7, 95, 237);
         }
       }
     }

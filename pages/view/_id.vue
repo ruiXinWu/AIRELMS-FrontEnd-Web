@@ -5,12 +5,14 @@
     <div class=" detail_info detail_box clearfix">
       <div class="layout_left">
         <ul class="course_tab clearfix">
-          <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">课程介绍</a></li>
-          <li :class="{on: tab == 'big'}"><a href="javascript:" @click="tab = 'big'">录播课程</a></li>
+          <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">About</a></li>
+          <!-- <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">课程介绍</a></li> -->
+          <li :class="{on: tab == 'big'}"><a href="javascript:" @click="tab = 'big'">Syllabus</a></li>
+          <!--<li :class="{on: tab == 'big'}"><a href="javascript:" @click="tab = 'big'">录播课程</a></li>-->
         </ul>
         <div class="content_info"  v-if="tab == 'info'">
           <div class="introduce" v-html="courseInfo.introduce"></div>
-          <y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>
+          <!--<y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>-->
         </div>
         <div class="content_info"  v-if="tab == 'big'">
           <y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>
@@ -18,11 +20,13 @@
       </div>
       <div class="layout_right">
         <div class="teacher_info clearfix">
-          <span class="head">讲师简介</span>
+          <span class="head">Instructor</span>
+          <!--<span class="head">讲师简介</span>-->
           <div class="teacher_msg">
             <div class="teacher_msg_right">
-              <img class="teacher_phone" v-if="teacherInfo.headImgUrl" :src="teacherInfo.headImgUrl" alt="">
-              <img class="teacher_phone" v-else src="~/assets/image/friend.jpg" alt="">
+              <!--<img class="teacher_phone" v-if="teacherInfo.headImgUrl" :src="teacherInfo.headImgUrl" alt="">-->
+              <!--<img class="teacher_phone" v-else src="~/assets/image/friend.jpg" alt="">-->
+              <img class="teacher_phone" src="~/assets/image/logo1.png" alt="">
               <div class="teacher_name">
                 {{teacherInfo.lecturerName}}
               </div>
@@ -226,7 +230,7 @@ export default {
     background: #fff;
     border-radius: 8px;
     position: relative;
-    min-height: 180px;
+    min-height: 480px;
     .head {
       display: block;
       line-height: 60px;

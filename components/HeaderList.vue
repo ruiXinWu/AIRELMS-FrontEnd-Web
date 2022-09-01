@@ -3,35 +3,35 @@
   <div class="header_list">
     <div class="list_content">
       <ul class="content_ul clearfix">
-        <li :class="{now: oneNow == 0}" @click="changeOne([], -1, '')"><a href="javascript:">全部</a></li>
+        <li :class="{now: oneNow == 0}" @click="changeOne([], -1, '')"><a href="javascript:">All</a></li>
         <li :class="{now: oneNow == item.id}" v-for="(item, index) in classList" :key="index" @click="changeOne(item.twoList, index, item.id)"><a href="javascript:">{{item.categoryName}}</a></li>
       </ul>
     </div>
     <div class="list_content" v-if="twoList.length">
       <ul class="content_ul clearfix">
-        <li :class="{now: twoNow == 0}" @click="changeTwo([], -1, '')"><a href="javascript:">全部</a></li>
+        <li :class="{now: twoNow == 0}" @click="changeTwo([], -1, '')"><a href="javascript:">All</a></li>
         <li :class="{now: twoNow == two.id}" v-for="(two, index) in twoList" :key="index" @click="changeTwo(two.threeList, index, two.id)"><a href="javascript:">{{two.categoryName}}</a></li>
       </ul>
     </div>
     <div class="list_content" v-if="threeList.length">
       <ul class="content_ul clearfix">
-        <li :class="{now: threeNow == 0}" @click="changeThree(-1, '')"><a href="javascript:">全部</a></li>
+        <li :class="{now: threeNow == 0}" @click="changeThree(-1, '')"><a href="javascript:">All</a></li>
         <li :class="{now: threeNow == three.id}" @click="changeThree(index, three.id)" v-for="(three, index) in threeList" :key="index"><a href="javascript:">{{three.categoryName}}</a></li>
       </ul>
     </div>
     <div class="list_content">
       <ul class="content_ul clearfix">
-        <li :class="{now: fourNow == 3}" @click="changeFour(3)"><a href="javascript:">全部</a></li>
-        <li :class="{now: fourNow == 2}" @click="changeFour(2)"><a href="javascript:">付费</a></li>
-        <li :class="{now: fourNow == 1}" @click="changeFour(1)"><a href="javascript:">免费</a></li>
-        <li v-if="webInfo && webInfo.isEnableVip" :class="{now: fourNow == 4}" @click="changeFour(4)"><a href="javascript:">SVIP免费</a></li>
+        <li :class="{now: fourNow == 3}" @click="changeFour(3)"><a href="javascript:">All</a></li>
+        <li :class="{now: fourNow == 2}" @click="changeFour(2)"><a href="javascript:">Paid</a></li>
+        <li :class="{now: fourNow == 1}" @click="changeFour(1)"><a href="javascript:">Free</a></li>
+        <li v-if="webInfo && webInfo.isEnableVip" :class="{now: fourNow == 4}" @click="changeFour(4)"><a href="javascript:">SVIPFree</a></li>
       </ul>
     </div>
     <div class="list_content" v-if="courseType === 'live'">
       <ul class="content_ul clearfix">
-        <li :class="{now: fiveNow == ''}" @click="changeFive('')"><a href="javascript:">全部</a></li>
-        <li :class="{now: fiveNow == 2}" @click="changeFive(2)"><a href="javascript:">直播</a></li>
-        <li :class="{now: fiveNow == 3}" @click="changeFive(3)"><a href="javascript:">直播+录播</a></li>
+        <li :class="{now: fiveNow == ''}" @click="changeFive('')"><a href="javascript:">All</a></li>
+        <li :class="{now: fiveNow == 2}" @click="changeFive(2)"><a href="javascript:">Live</a></li>
+        <li :class="{now: fiveNow == 3}" @click="changeFive(3)"><a href="javascript:">Live+Record</a></li>
       </ul>
     </div>
   </div>

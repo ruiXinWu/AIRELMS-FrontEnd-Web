@@ -3,32 +3,36 @@
     <div class="h_top" v-if="!hideTop">
       <div class="h_top_body">
         <ul class="top_list clearfix" v-if="userInfo">
-          <li><a :href="mainUrl+'/recruit'">讲师招募</a></li>
-          <li v-if="isTeacher"><nuxt-link :to="{name: 'account-teacher'}">讲师中心</nuxt-link></li>
-          <li class="s_left"><nuxt-link :to="{name: 'account-order'}">我的订单</nuxt-link></li>
+          <li><a :href="mainUrl+'/recruit'">Hiring</a></li>
+          <li v-if="isTeacher"><nuxt-link :to="{name: 'account-teacher'}">Instructor Center</nuxt-link></li>
+          <li class="s_left"><nuxt-link :to="{name: 'account-order'}">My Order</nuxt-link></li>
           <li class="s_left">
             <nuxt-link :to="{name: 'account'}">{{userInfo.mobile}}</nuxt-link>
           </li>
-          <li><a href="javascript:" @click="signOut">退出</a></li>
+          <li><a href="javascript:" @click="signOut">Exit</a></li>
         </ul>
         <ul class="top_list clearfix" v-else>
-          <li class="s_left"><a href="javascript:" @click="login">登录</a></li>
-          <li><a href="javascript:" @click="register">注册</a></li>
+          <li class="s_left"><a href="javascript:" @click="login">Log In</a></li>
+          <li><a href="javascript:" @click="register">Sign up</a></li>
         </ul>
       </div>
-    </div>
-    <div class="h_nav">
-      <div class="h_logo">
-        <a :href="mainUrl">
-          <img :src="webInfo.logoImg" alt="" v-if="webInfo">
-        </a>
+     </div>
+     <div class="h_nav">
+        <div class="h_logo">
+        <!--<img src="require('./assets/image/logo1.png')">-->
+        <!--<img v-bind:src="require('./assets/image/logo1.png')" />-->
+        <!--    <a :href="mainUrl">
+               <img :src="webInfo.logoImg" alt="" v-if="webInfo">
+             </a>
+             -->
+          <img class="logo" src="~/assets/image/Logo2.png" alt="">
       </div>
       <ul class="h_nav_ul clearfix" v-if="!hideTop && navList">
         <li v-for="(item, index) in navList" :key="index">
           <nuxt-link :class="{active: isNow === item.navUrl}" :to="item.navUrl" :target="item.target">{{item.navTitle}}</nuxt-link>
         </li>
       </ul>
-      <nuxt-link v-if="hideTop" :to="{name: 'index'}" class="go_index font_14 c_blue">返回首页</nuxt-link>
+      <nuxt-link v-if="hideTop" :to="{name: 'index'}" class="go_index font_14 c_blue">Back to Home</nuxt-link>
     </div>
   </div>
 </template>
@@ -94,7 +98,7 @@ export default {
     background: #fff;
   }
   .h_top {
-    background: rgb(51, 51, 51);
+    background: rgb(7, 95, 237);
     .h_top_body {
       width: 1200px;
       height: 30px;

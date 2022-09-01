@@ -6,39 +6,45 @@
         <div v-if="!(userInfo)" :class="{login_form: true, rotate: tab == 2}">
           <div :class="{tabs: true, clearfix: true, r180: tabp == 2}">
             <div class="fl tab" @click="changetab(1)">
-              <span :class="{on: tab == 1}">登录</span>
+              <span :class="{on: tab == 1}">Log In</span>
             </div>
             <div class="fl tab" @click="changetab(2)">
-              <span :class="{on: tab == 2}">注册</span>
+              <span :class="{on: tab == 2}">Sign Up</span>
             </div>
           </div>
           <div class="form_body" v-if="tabp == 1">
             <form action="" @submit="loginSubmit">
-              <input type="text" v-model="obj.mobile" placeholder="请输入手机号或邮箱">
+              <input type="text" v-model="obj.mobile" placeholder="Enter your email or username">
               <div class="error_msg">{{errTip1}}</div>
-              <input type="password" v-model="obj.password" placeholder="6-20位密码，可用数字/字母/符号组合">
+              <input type="password" v-model="obj.password" placeholder="Please enter your password">
               <div class="error_msg">{{errTip2}}</div>
-              <input type="submit" v-if="subState" disabled="disabled" value="登录中···" class="btn" />
-              <input type="submit" v-else value="登录" class="btn" />
+              <input type="submit" v-if="subState" disabled="disabled" value="Logging In···" class="btn" />
+              <input type="submit" v-else value="Log In" class="btn" />
             </form>
-            <input type="checkbox" class="check"><span class="next_auto">下次自动登录</span>
-            <nuxt-link class="is_go" :to="{name: 'reset'}">忘记密码</nuxt-link>
+            <input type="checkbox" class="check"><span class="next_auto">Auto-Log In Next Time</span>
+            <nuxt-link class="is_go" :to="{name: 'reset'}">Forget Password?</nuxt-link>
           </div>
           <div class="form_body r180" v-if="tabp == 2">
             <form action="" @submit="regSubmit">
-              <input type="text" v-model="pobj.mobile" placeholder="请输入手机号">
+              <!--<input type="text" v-model="pobj.mobile" placeholder="请输入手机号">-->
+              <input type="text" v-model="pobj.mobile" placeholder="Please Enter your Email">
               <div class="phone_yzm">
-                <input type="text" name="code" placeholder="请输入手机验证码" class="phone" v-model="pobj.code" maxlength="6">
+              <!--<input type="text" name="code" placeholder="请输入手机验证码" class="phone" v-model="pobj.code" maxlength="6">-->
+                <input type="text" name="code" placeholder="Please enter your email vertification code" class="phone" v-model="pobj.code" maxlength="6">
                 <y-button :mobile="pobj.mobile"></y-button>
               </div>
-              <input type="password" v-model="pobj.password" placeholder="6-20位密码，可用数字/字母/符号组合">
-              <input type="password" v-model="pobj.repassword" placeholder="确认密码">
+              <!--<input type="password" v-model="pobj.password" placeholder="6-20位密码，可用数字/字母/符号组合">-->
+              <input type="password" v-model="pobj.password" placeholder="Create password between 6-20 characters">
+              <!--<input type="password" v-model="pobj.repassword" placeholder="确认密码">-->
+              <input type="password" v-model="pobj.repassword" placeholder="Re-enter your password">
               <div class="mgt20 font_14">
                 <input type="checkbox" id="tonyi" v-model="pobj.check">
-                <label for="tonyi">我已经阅读并同意</label><a href="jvascript:" class="c_blue" @click="xieyi = true">《用户协议》</a>
+                <label for="tonyi">I accept AI Roboto Edu's Term of Use and Privacy Notice</label><a href="jvascript:" class="c_blue" @click="xieyi = true"> Link</a>
+                <!--<label for="tonyi">我已经阅读并同意</label><a href="jvascript:" class="c_blue" @click="xieyi = true">《用户协议》</a>-->
               </div>
               <input type="submit" v-if="subState" disabled="disabled" value="提交中···" class="btn">
-              <input type="submit" v-else value="注册" class="btn">
+              <!--<input type="submit" v-else value="注册" class="btn">-->
+              <input type="submit" v-else value="Sign Up" class="btn">
             </form>
           </div>
         </div>
@@ -387,7 +393,8 @@ export default {
     height: 600px;
     background: url(../assets/image/login_bg.jpg) no-repeat center center;
     .center_box {
-      width: 1200px;
+      width: 450px;
+      //width: 1200px;(This is where we change the position of box)
       margin: 0 auto;
       position: relative;
     }

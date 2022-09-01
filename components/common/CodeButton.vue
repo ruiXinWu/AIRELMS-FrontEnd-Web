@@ -7,7 +7,7 @@ export default {
   props: {
     mobile: {
       // 手机号
-      type: String,
+      type: [String, Number],
       default: 1
     }
   },
@@ -24,7 +24,7 @@ export default {
     getCode (event) {
       if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/).test(this.mobile)) {
         this.$msgBox({
-          content: '请输入正确邮箱号码',
+          content: '请输入正确的邮箱号码',
           isShowCancelBtn: false
         })
         return false;

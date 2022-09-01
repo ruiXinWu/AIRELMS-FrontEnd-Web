@@ -1,7 +1,8 @@
 <!-- 课程大纲列表 -->
 <template>
   <div class="sy_body">
-    <div class="title"><span></span>课程大纲</div>
+    <!--<div class="title"><span></span>课程大纲</div>-->
+    <div class="title"><span></span>Syllabus</div>
     <div class="chapter_info" v-for="(one, index) in list" :key="index">
       <div class="chapter_name">
         <span>第{{index + 1}}章&nbsp;&nbsp;</span>{{one.chapterName}}

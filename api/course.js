@@ -8,7 +8,7 @@ export const courseList = (params={}) => {
 export const courseClass = (params={}) => {
   return http().post('/course/api/course/category/list', params)
 }
-// 课程详情(未登录)
+// 课程详情(未登录)(go to backend and find the return type)
 export const courseDetail = (params={}) => {
   return http().post('/course/api/course/view', params)
 }

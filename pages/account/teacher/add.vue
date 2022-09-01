@@ -125,8 +125,12 @@ export default {
   // 页面打开完毕
   methods: {
     setUrl (res) {
+      //this.obj.courseLogo = res;
       this.obj.courseLogo = res.url;
-      // console.log(res)
+      console.log(this.obj.courseLogo)
+      console.log(this.obj)
+      console.log(res)
+      console.log(res.url)
     },
     courseSave (e) {
       e.preventDefault();
@@ -171,6 +175,8 @@ export default {
       } else {
         this.obj.courseOriginal = 0;
       }
+      console.log(this.obj.courseLogo)
+      console.log(this.$route.query.t)
       if (!this.obj.courseLogo && !(this.$route.query.t === 'paper')) {
         this.$msgBox({
           content: '请上传课程封面',

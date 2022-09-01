@@ -3,25 +3,25 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _19e01596 = () => interopDefault(import('../pages/account/index.vue' /* webpackChunkName: "pages/account/index" */))
-const _be8814d8 = () => interopDefault(import('../pages/apply.vue' /* webpackChunkName: "pages/apply" */))
-const _138e9830 = () => interopDefault(import('../pages/list.vue' /* webpackChunkName: "pages/list" */))
-const _940c27e2 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
-const _3e4325e4 = () => interopDefault(import('../pages/recruit.vue' /* webpackChunkName: "pages/recruit" */))
-const _d5d69216 = () => interopDefault(import('../pages/reset.vue' /* webpackChunkName: "pages/reset" */))
-const _11898015 = () => interopDefault(import('../pages/account/earnings.vue' /* webpackChunkName: "pages/account/earnings" */))
-const _32aad612 = () => interopDefault(import('../pages/account/order.vue' /* webpackChunkName: "pages/account/order" */))
-const _7abaf8da = () => interopDefault(import('../pages/account/reset.vue' /* webpackChunkName: "pages/account/reset" */))
-const _5512b1e6 = () => interopDefault(import('../pages/account/study.vue' /* webpackChunkName: "pages/account/study" */))
-const _5f11c7a9 = () => interopDefault(import('../pages/account/teacher/index.vue' /* webpackChunkName: "pages/account/teacher/index" */))
-const _75d3dbb8 = () => interopDefault(import('../pages/account/teacher/add.vue' /* webpackChunkName: "pages/account/teacher/add" */))
-const _b2150e42 = () => interopDefault(import('../pages/account/teacher/check.vue' /* webpackChunkName: "pages/account/teacher/check" */))
-const _2493e058 = () => interopDefault(import('../pages/account/teacher/course.vue' /* webpackChunkName: "pages/account/teacher/course" */))
-const _7027627a = () => interopDefault(import('../pages/account/teacher/period.vue' /* webpackChunkName: "pages/account/teacher/period" */))
-const _21c0d05c = () => interopDefault(import('../pages/account/teacher/praxis.vue' /* webpackChunkName: "pages/account/teacher/praxis" */))
-const _a17e0e7a = () => interopDefault(import('../pages/terrace/_id.vue' /* webpackChunkName: "pages/terrace/_id" */))
-const _41e6609a = () => interopDefault(import('../pages/view/_id.vue' /* webpackChunkName: "pages/view/_id" */))
-const _275b6e10 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _6c603bdf = () => interopDefault(import('..\\pages\\account\\index.vue' /* webpackChunkName: "pages_account_index" */))
+const _53428f84 = () => interopDefault(import('..\\pages\\apply.vue' /* webpackChunkName: "pages_apply" */))
+const _0c7f1bf8 = () => interopDefault(import('..\\pages\\list.vue' /* webpackChunkName: "pages_list" */))
+const _688085ff = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
+const _698b03d4 = () => interopDefault(import('..\\pages\\recruit.vue' /* webpackChunkName: "pages_recruit" */))
+const _479b50e5 = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages_reset" */))
+const _7f1e6da8 = () => interopDefault(import('..\\pages\\account\\earnings.vue' /* webpackChunkName: "pages_account_earnings" */))
+const _f5aa074a = () => interopDefault(import('..\\pages\\account\\order.vue' /* webpackChunkName: "pages_account_order" */))
+const _1522a9dc = () => interopDefault(import('..\\pages\\account\\reset.vue' /* webpackChunkName: "pages_account_reset" */))
+const _27f6cd56 = () => interopDefault(import('..\\pages\\account\\study.vue' /* webpackChunkName: "pages_account_study" */))
+const _2cf113f3 = () => interopDefault(import('..\\pages\\account\\teacher\\index.vue' /* webpackChunkName: "pages_account_teacher_index" */))
+const _ca649afc = () => interopDefault(import('..\\pages\\account\\teacher\\add.vue' /* webpackChunkName: "pages_account_teacher_add" */))
+const _74d4c529 = () => interopDefault(import('..\\pages\\account\\teacher\\check.vue' /* webpackChunkName: "pages_account_teacher_check" */))
+const _487f666c = () => interopDefault(import('..\\pages\\account\\teacher\\course.vue' /* webpackChunkName: "pages_account_teacher_course" */))
+const _5e319f70 = () => interopDefault(import('..\\pages\\account\\teacher\\period.vue' /* webpackChunkName: "pages_account_teacher_period" */))
+const _0fcb0d52 = () => interopDefault(import('..\\pages\\account\\teacher\\praxis.vue' /* webpackChunkName: "pages_account_teacher_praxis" */))
+const _e56cc13c = () => interopDefault(import('..\\pages\\terrace\\_id.vue' /* webpackChunkName: "pages_terrace__id" */))
+const _4673fc4b = () => interopDefault(import('..\\pages\\view\\_id.vue' /* webpackChunkName: "pages_view__id" */))
+const _c24e3a30 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -41,83 +41,83 @@ export const routerOptions = {
 
   routes: [{
     path: "/account",
-    component: _19e01596,
+    component: _6c603bdf,
     name: "account"
   }, {
     path: "/apply",
-    component: _be8814d8,
+    component: _53428f84,
     name: "apply"
   }, {
     path: "/list",
-    component: _138e9830,
+    component: _0c7f1bf8,
     name: "list"
   }, {
     path: "/login",
-    component: _940c27e2,
+    component: _688085ff,
     name: "login"
   }, {
     path: "/recruit",
-    component: _3e4325e4,
+    component: _698b03d4,
     name: "recruit"
   }, {
     path: "/reset",
-    component: _d5d69216,
+    component: _479b50e5,
     name: "reset"
   }, {
     path: "/account/earnings",
-    component: _11898015,
+    component: _7f1e6da8,
     name: "account-earnings"
   }, {
     path: "/account/order",
-    component: _32aad612,
+    component: _f5aa074a,
     name: "account-order"
   }, {
     path: "/account/reset",
-    component: _7abaf8da,
+    component: _1522a9dc,
     name: "account-reset"
   }, {
     path: "/account/study",
-    component: _5512b1e6,
+    component: _27f6cd56,
     name: "account-study"
   }, {
     path: "/account/teacher",
-    component: _5f11c7a9,
+    component: _2cf113f3,
     name: "account-teacher"
   }, {
     path: "/account/teacher/add",
-    component: _75d3dbb8,
+    component: _ca649afc,
     name: "account-teacher-add"
   }, {
     path: "/account/teacher/check",
-    component: _b2150e42,
+    component: _74d4c529,
     name: "account-teacher-check"
   }, {
     path: "/account/teacher/course",
-    component: _2493e058,
+    component: _487f666c,
     name: "account-teacher-course"
   }, {
     path: "/account/teacher/period",
-    component: _7027627a,
+    component: _5e319f70,
     name: "account-teacher-period"
   }, {
     path: "/account/teacher/praxis",
-    component: _21c0d05c,
+    component: _0fcb0d52,
     name: "account-teacher-praxis"
   }, {
     path: "/terrace/:id?",
-    component: _a17e0e7a,
+    component: _e56cc13c,
     name: "terrace-id"
   }, {
     path: "/view/:id?",
-    component: _41e6609a,
+    component: _4673fc4b,
     name: "view-id"
   }, {
     path: "/",
-    component: _275b6e10,
+    component: _c24e3a30,
     name: "index"
   }, {
     path: "*",
-    component: _275b6e10,
+    component: _c24e3a30,
     name: "custom"
   }],
 

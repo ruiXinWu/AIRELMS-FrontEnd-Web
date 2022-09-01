@@ -5,13 +5,13 @@
       <y-side :type="'jszm'" :showSide="'zm'"></y-side>
       <div class="person_content">
         <div class="person_title">
-          <!-- 讲师招募 -->
+          <!-- Hiring Instructors -->
           {{webInfo.recruitTitle}}
         </div>
         <div class="person_info">
           <div class="clearfix" v-html="webInfo.recruitInfo"></div>
           <div>
-            <a href="javascript:" class="apply_btn" @click="goApply">申请成为讲师</a>
+            <a href="javascript:" class="apply_btn" @click="goApply">Apply to be an instructor</a>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@ import YSide from '~/components/TerraceSide'
 export default {
   head () {
       return {
-        title: this.$store.state.clientData.name + '-讲师招募',
+        title: this.$store.state.clientData.name + '-Hiring Instructors',
         meta: [
             {
                 hid: 'keywords',

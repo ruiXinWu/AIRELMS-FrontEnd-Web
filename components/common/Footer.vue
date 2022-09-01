@@ -11,9 +11,9 @@
       <div class="m_right" v-if="service">
          <div class="footer_msg">
             <ul>
-              <li class="m_header">官方微信</li>
+              <!--<li class="m_header">官方微信</li>-->
               <li>
-                <img :src="service.weixin" alt="">
+                <!--<img :src="service.weixin" alt="">-->
               </li>
             </ul>
           </div>
@@ -33,16 +33,16 @@
         <li v-for="(item, index) in friendList" :key="index"><a :href="item.linkUrl" :target="item.linkTarget">{{item.linkName}}</a></li>
       </ul>
     </div>
-    <div class="copyright" v-if="service">
+    <!--<div class="copyright" v-if="service">
       <span v-html="service.copyright"></span>
-    </div>
-    <div class="icp_num">
+    </div>-->
+    <!--<div class="icp_num">
       <a href="http://www.doityun.com/" target="_blank" class="lingke_link">IT云提供计算服务</a>
       <span v-if="service.icp">&nbsp;|&nbsp;</span>
       <a href="http://www.miitbeian.gov.cn/" target="_blank" class="lingke_link">{{service.icp}}</a>
       <span v-if="service.prn">&nbsp;|&nbsp;</span>
       <a :href="'http://www.beian.gov.cn/portal/index'" target="_blank" v-if="service.prn" class="lingke_link"><img src="~/assets/image/prn_icon.png" class="prn_icon" alt="">&nbsp;{{service.prn}}</a>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>
@@ -75,8 +75,8 @@
 </script>
 <style lang="scss" rel="stylesheet/scss">
   .i_footer {
-    background: rgb(51, 51, 51);
-    padding-top: 60px;
+    background: rgb(7, 95, 237);
+    padding-top: 30px;
     .footer_content {
       width: 1200px;
       margin: 0 auto;

@@ -10,7 +10,8 @@
       </ul>
       <ul class="header_right clearfix">
         <li v-if="userInfo.roleType === 2"><nuxt-link :to="{name: 'account-teacher-course'}" class="left_col">讲师中心</nuxt-link></li>
-        <li><nuxt-link :to="{name: 'account-order'}" class="left_col">我的订单</nuxt-link></li>
+        <!--<li><nuxt-link :to="{name: 'account-order'}" class="left_col">我的订单</nuxt-link></li>-->
+        <li><nuxt-link :to="{name: 'account-order'}" class="left_col">My order</nuxt-link></li>
         <li>
           <nuxt-link :to="{name: 'account'}" :class="{left_col: true, c_gold: isVip}">{{userInfo.mobile}}</nuxt-link>
           <img v-if="isVip" src="~/assets/image/vip_icon.png" @click="goVip" alt="" class="vip_icon">
@@ -26,24 +27,31 @@
       <div class="video_content clearfix" :class="{show_panel: cateType}">
         <div class="win_box">
           <div class="video_win" id="player" ref="videobox" :style="'background-image:url('+courseInfo.courseLogo+')'">
+          //console.log('background-image:url('+courseInfo.courseLogo+')')
+          <!--<div class="video_win" id="player" ref="videobox" img="~/assets/image/logo_bg.jpg">-->
+          <!--填入新的图片-->
           </div>
           <span class="iconfont close_video" v-if="showTop" @click="stopVideo">&#xe616;</span>
         </div>
         <div class="video_info">
           <a href="javascript:" @click="changeTab(1)" :class="{on: cateType == 1}">
             <i class="iconfont">&#xe908;</i>
-            <p>章节</p>
+            <!--<p>章节</p>-->
+            <p>Contents</p>
           </a>
           <a href="javascript:" @click="changeTab(2)" :class="{on: cateType == 2}">
             <i class="iconfont">&#xe602;</i>
-            <p>课件</p>
+            <!--<p>课件</p>-->
+            <p>Learning Resources</p>
           </a>
         </div>
         <div class="cate_panel">
           <div  v-if="cateType == 1">
             <dl v-for="(one, index) in courseInfo.chapterList" :key="index">
-              <dt>第{{index + 1}}章：{{one.chapterName}}</dt>
-              <dd v-for="(two, num) in one.periodList" :key="num" :class="{on : nowNo == two.id}" @click="videoPlay(two)"><i class="iconfont">&#xe690;</i><span>第{{num + 1}}讲：</span>{{two.periodName}}
+              <!--<dt>第{{index + 1}}章：{{one.chapterName}}</dt>-->
+              <dt>Chapter{{index + 1}}：{{one.chapterName}}</dt>
+              <!--<dd v-for="(two, num) in one.periodList" :key="num" :class="{on : nowNo == two.id}" @click="videoPlay(two)"><i class="iconfont">&#xe690;</i><span>第{{num + 1}}讲：</span>{{two.periodName}}-->
+              <dd v-for="(two, num) in one.periodList" :key="num" :class="{on : nowNo == two.id}" @click="videoPlay(two)"><i class="iconfont">&#xe690;</i><span>Section{{num + 1}}：</span>{{two.periodName}}
                 <span class="no_video2" v-if="!two.videoVid">(未更新)</span>
                 <span class="c_blue" v-if="two.isFree">(免费)</span>
               </dd>
@@ -220,7 +228,7 @@ export default {
     }
   }
   .video_body {
-    background: rgb(51, 51, 51);
+    background:rgb(7, 95, 237);
     .video_content {
       width: 1200px;
       margin: 0 auto;
@@ -229,16 +237,20 @@ export default {
     }
     .win_box {
       float: left;
-      width: 1120px;
-      height: 595px;
-      margin: 5px 0;
+      //width: 1120px;
+      //height: 595px;
+      width: 820px;
+      height: 510px;
+      margin: 50px 0;
       border-radius: 8px;
       border: 5px solid #000;
     }
     .video_win {
-      width: 1110px;
-      height: 585px;
-      -webkit-background-size: 100%;
+      //width: 1110px;
+      //height: 585px;
+      width: 810px;
+      height: 500px;
+      -webkit-background-size: 50%;
       background-size: 100%;
       &.mini_win {
         width: 600px;
@@ -255,7 +267,8 @@ export default {
       float: right;
       padding-top: 20px;
       height: 595px;
-      background-color: #333;      
+      //background-color: #333;  
+      background-color: rgb(7, 95, 237);
       a {
         overflow: hidden;
         display: block;
@@ -286,7 +299,7 @@ export default {
     z-index: 11;
     top: 0;
     right: -202px;
-    background-color: #000;
+    background-color: rgb(7, 102, 237);
     height: 595px;
     width: 210px;
     padding: 20px 30px;
