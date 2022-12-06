@@ -27,7 +27,6 @@
       <div class="video_content clearfix" :class="{show_panel: cateType}">
         <div class="win_box">
           <div class="video_win" id="player" ref="videobox" :style="'background-image:url('+courseInfo.courseLogo+')'">
-          //console.log('background-image:url('+courseInfo.courseLogo+')')
           <!--<div class="video_win" id="player" ref="videobox" img="~/assets/image/logo_bg.jpg">-->
           <!--填入新的图片-->
           </div>
@@ -53,7 +52,7 @@
               <!--<dd v-for="(two, num) in one.periodList" :key="num" :class="{on : nowNo == two.id}" @click="videoPlay(two)"><i class="iconfont">&#xe690;</i><span>第{{num + 1}}讲：</span>{{two.periodName}}-->
               <dd v-for="(two, num) in one.periodList" :key="num" :class="{on : nowNo == two.id}" @click="videoPlay(two)"><i class="iconfont">&#xe690;</i><span>Section{{num + 1}}：</span>{{two.periodName}}
                 <span class="no_video2" v-if="!two.videoVid">(未更新)</span>
-                <span class="c_blue" v-if="two.isFree">(免费)</span>
+                <span class="c_blue" v-if="two.isFree">(Free)</span>
               </dd>
             </dl>
           </div>

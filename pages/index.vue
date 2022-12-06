@@ -26,7 +26,7 @@
                   <img :src="that.courseLogo" alt="" />
                 </div>
                 <p>{{ that.courseName }}</p>
-                <span v-if="that.isFree" class="price_box">免费</span>
+                <span v-if="that.isFree" class="price_box">Free</span>
                 <span class="price_box" v-else
                   >￥{{ that.courseOriginal.toFixed(2)
                   }}<span
@@ -35,7 +35,7 @@
                     >SVIP:{{
                       that.courseDiscount
                         ? "￥" + that.courseDiscount.toFixed(2)
-                        : "免费"
+                        : "Free"
                     }}</span
                   ></span
                 >
@@ -100,7 +100,7 @@
                     >SVIP:{{
                       thatGroup.courseDiscount
                         ? "￥" + thatGroup.courseDiscount.toFixed(2)
-                        : "免费"
+                        : "Free"
                     }}</span
                   ></span
                 >

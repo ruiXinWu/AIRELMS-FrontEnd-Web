@@ -14,13 +14,15 @@
         <div class="main_cont form">
           <form action="" @submit="courseSave">
             <div class="form_group">
-              <div class="label">课程名称</div>
+              <!--<div class="label">课程名称</div>-->
+              <div class="label">Course Name</div>
               <div class="form_ctl">
-                <input type="text" v-model="obj.courseName" class="form_input" placeholder="请输入课程名称">
+                <input type="text" v-model="obj.courseName" class="form_input" placeholder="Enter course name">
               </div>
             </div>
             <div class="form_group">
-              <div class="label">课程分类</div>
+              <!--<div class="label">课程分类</div>-->
+              <div class="label">Category</div>
               <div class="form_ctl">
                 <select v-model="obj.categoryId1" @change="changeCate1" name="" id="" class="form_input_min">
                   <option value="">--请选择--</option>
@@ -37,18 +39,45 @@
               </div>
             </div>
             <div class="form_group" v-if="!(this.$route.query.t === 'paper')">
-              <div class="label">课程介绍</div>
+              <div class="label">Course Introduction</div>
+              <!--<div class="label">课程介绍</div>-->
               <div class="form_ctl">
                 <div id="courseInfo"></div>
               </div>
             </div>
+            <!--这里和下面都是我新加的quiz和project-->
             <div class="form_group">
-              <div class="label">是否免费</div>
+              <div class="label">Make quiz here</div>
+              <div class="form_ctl_1">
+                <a href="https://wispform.com/publishers/sign_in">Click here to login in and make the quiz</a>
+              </div>
+            </div>
+            <div class="form_group">
+              <div class="label">Make project here</div>
+              <div class="form_ctl_1">
+                <a href="https://colab.research.google.com/">Click here to login in and make the project</a>
+              </div>
+            </div>
+            <div class="form_group">
+              <div class="label">Share Quiz link here</div>
+              <div class="form_ctl">
+                <input type="text" v-model="obj.courseQuiz" class="form_input" placeholder="Please enter quiz link">
+              </div>
+            </div>
+            <div class="form_group">
+              <div class="label">Share project link</div>
+              <div class="form_ctl">
+                <input type="text" v-model="obj.courseProject" class="form_input" placeholder="Please enter project link">
+              </div>
+            </div>
+            <div class="form_group">
+              <div class="label">是否Free</div>
+              <!--<div class="label">Price</div>-->
               <div class="form_ctl form_ctl_radio">
                 <input name="sex" v-model="obj.isFree" type="radio" value="0" id="sex1">
                 <label for="sex1">付费</label>
                 <input name="sex" v-model="obj.isFree" type="radio" value="1" id="sex2">
-                <label for="sex2">免费</label>
+                <label for="sex2">Free</label>
               </div>
             </div>
             <div class="form_group" v-if="this.$route.query.t === 'paper'">
@@ -67,7 +96,8 @@
               </div>
             </div>
             <div class="form_group" v-if="!(this.$route.query.t === 'paper')">
-              <div class="label">上传封面</div>
+              <div class="label">Cover Upload</div>
+              <!--<div class="label">上传封面</div>-->
               <div class="form_ctl upload_ctl">
                 <input type="hidden" v-model="obj.courseLogo">
                 <div class="preview">
@@ -118,6 +148,8 @@ export default {
         courseLogo: '',
         introduce: '',
         courseName: '',
+        courseQuiz:'',
+        courseProject:'',
         courseOriginal: ''
       }
     }
@@ -146,6 +178,21 @@ export default {
       if (!this.obj.courseName) {
         this.$msgBox({
           content: '请输入课程名称',
+          isShowCancelBtn: false
+        })
+        return false;
+      }
+      //我们在这里对新加入的两个fields做异常处理
+      if (!this.obj.courseQuiz) {
+        this.$msgBox({
+          content: 'Please enter quiz link',
+          isShowCancelBtn: false
+        })
+        return false;
+      }
+      if (!this.obj.courseProject) {
+        this.$msgBox({
+          content: 'Please enter project link',
           isShowCancelBtn: false
         })
         return false;
@@ -188,7 +235,7 @@ export default {
 
       this.btnDis = true;
       if (this.obj.id) {
-        // console.log('courseUpdate')
+        console.log('courseUpdate')
         courseUpdate(this.obj).then(res => {
           this.btnDis = false;
           res = res.data;

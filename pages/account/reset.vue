@@ -10,26 +10,26 @@
         <div class="main_cont form">
           <form action="" @submit="regSubmit">
             <div class="form_group">
-              <div class="label">手机号:</div>
+              <div class="label">Phone Number:</div>
               <div class="form_ctl">
                   <input type="text" v-model="pobj.mobile" class="form_input" placeholder="请输入昵称" disabled="disabled">
               </div>
             </div>
             <div class="form_group">
-              <div class="label">验证码:</div>
+              <div class="label">Vertifivation Code:</div>
               <div class="form_ctl">
                   <input type="text" v-model="pobj.code" maxlength="6" class="form_input" placeholder="请输入手机验证码">
                   <y-button :mobile="pobj.mobile" @cb="submitBtn = true"></y-button>
               </div>
             </div>
             <div class="form_group">
-              <div class="label">重置密码:</div>
+              <div class="label">Reset Password:</div>
               <div class="form_ctl">
                   <input type="password" v-model="pobj.newPassword" class="form_input" placeholder="请输入密码">
               </div>
             </div>
             <div class="form_group">
-              <div class="label">确定密码:</div>
+              <div class="label">Confirm Password:</div>
               <div class="form_ctl">
                   <input type="password" v-model="pobj.confirmPassword" class="form_input" placeholder="请再次输入新密码">
               </div>

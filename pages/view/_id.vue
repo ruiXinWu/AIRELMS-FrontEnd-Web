@@ -9,13 +9,37 @@
           <!-- <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">课程介绍</a></li> -->
           <li :class="{on: tab == 'big'}"><a href="javascript:" @click="tab = 'big'">Syllabus</a></li>
           <!--<li :class="{on: tab == 'big'}"><a href="javascript:" @click="tab = 'big'">录播课程</a></li>-->
+          <li :class="{on: tab == 'quiz'}"><a href="javascript:" @click="tab = 'quiz'">Quiz</a></li>
+          <li :class="{on: tab == 'project'}"><a href="javascript:" @click="tab = 'project'">Project</a></li>
         </ul>
         <div class="content_info"  v-if="tab == 'info'">
           <div class="introduce" v-html="courseInfo.introduce"></div>
           <!--<y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>-->
         </div>
+
+  
+
         <div class="content_info"  v-if="tab == 'big'">
           <y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>
+        </div>
+        <div class="content_info"  v-if="tab == 'quiz'">
+        <!-- here this is only for demo, in real case,我上次在这里 we need to subsitute this -->
+        <!--src="https://airobotoedu.wispform.com/6f47dd49"-->
+        <!--上面链接是最终要达到的效果，下面src部分是从后端拿的数据-->
+          <!--<div class="quiz" v-html="courseInfo.quiz"></div>-->
+          <iframe 
+              v-bind:src="courseInfo.quiz"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              style="height:840px; width:640px">
+              Loading...
+          </iframe>
+        </div>
+        <div class="content_info"  v-if="tab == 'project'">
+          <!--<vs-button color="primary" type="relief" icon="star" target :href="{url: project}">Click Here to see project</vs-button>-->
+          <button style="background-color:blue; width:100px; height:40px"><a style="color:white" href="https://colab.research.google.com/drive/1wS8DC7dcJhV_f3fcDIxwfZGz28z37YQH" role="button">Open Project</a></button>
+          <!--<div class="project_introduce" v-html="'if you meet any question, pay to see me in office hour'"></div>-->
         </div>
       </div>
       <div class="layout_right">
@@ -42,6 +66,8 @@
 <script>
 import YDisplay from '~/components/course/Display'
 import YFooter from '~/components/common/Footer'
+//import VimeoPlayer from '~/components/common/VimeoPlayer'
+//import YvueVideo from '~/components/common/vueVideo'
 import YSyllabus from '~/components/course/Syllabus'
 import YWatchVideo from '~/components/course/WatchVideo'
 import {courseDetail, userCourseDetail, chapterSign} from '~/api/course.js'
@@ -50,7 +76,9 @@ export default {
     YFooter,
     YDisplay,
     YSyllabus,
-    YWatchVideo
+    YWatchVideo,
+//    YvueVideo
+//    VimeoPlayer,
   },
   head () {
     return {
@@ -60,7 +88,10 @@ export default {
   data () {
     return {
       tab: 'info',
-      nowPeriodNo: ''  //当前播放章节
+      nowPeriodNo: '',    //当前播放章节
+                   //当前播放Vimeo视频id
+      videolink:'', //当前播放Vimeo视频link
+      //videoid:'', 
     }
   },
   validate ({ params }) {
@@ -68,14 +99,18 @@ export default {
     return /^\d+$/.test(params.id)
   },
   async asyncData(context) {
+    //我觉得这里是拿数据的关键，asyncData 获取到从了userCourseDetail 的数据变为了courseInfo 和 teacherinfo（很可能是这里全局变量）
     let tk = context.store.state.tokenInfo;
     try {
       let result = new Object();
-      if (tk) {
+      if (tk) {//有token info
 
         let {data} = await userCourseDetail({courseId: context.params.id}, tk);
         if (data.code == 200) {
           result.courseInfo = data.data;
+          result.project = 'https://colab.research.google.com/drive/1wS8DC7dcJhV_f3fcDIxwfZGz28z37YQH';
+          console.log(result.courseInfo.quiz);
+          console.log(result.courseInfo.quiz);
           result.teacherInfo = data.data.lecturer;
           result.isbuy = false;
           result.isLogin = false;
@@ -86,7 +121,7 @@ export default {
           result.courseInfo = null;
         }
       } else{
-
+        //be careful, 这里是courseDetail, 不是userCourseDetail， 和上面不太一样
         let {data} = await courseDetail({courseId: context.params.id});
         if (data.code == 200) {
           result.courseInfo = data.data;
@@ -97,6 +132,8 @@ export default {
           result.courseInfo = null;
         }
       }
+      console.log(result.courseInfo.quiz);
+      console.log(result.courseInfo);
       return result
     } catch (e) {
       context.error({ message: 'User not found', statusCode: 404 })
@@ -105,15 +142,18 @@ export default {
   },
   methods: {
     videoPlay (data) {
+      console.log(data);
       if (this.courseInfo.isPay || data.isFree) {
       window.scrollTo(0, 0)
       this.nowPeriodNo = data.id
+      console.log("12345");
       chapterSign({
         ip: 'string',
         periodId: data.id,
         videoVid: data.videoVid
       }).then(res => {
         res = res.data
+        console.log(res);
         this.isResetVideo = false
         if (res.code === 200) {
           this.play(Object.assign({vid: data.videoVid}, res.data));
@@ -135,27 +175,44 @@ export default {
       }
     },
     play (data) {
-      let box = this.$refs.watchVideo.$refs.videobox;
-      if (this.player) {
-        this.player.changeVid({
-          vid:data.vid,
-          playsafe: data.token,
-          ts: data.ts,
-          sign: data.sign,
-          autoplay: true
-        });
-      } else {
-        this.player = polyvObject('#player').videoPlayer({
-            'width': box.offsetWidth,
-            'height': box.offsetHeight,
-            'forceH5': true,
-            'code': data.code,
-            'playsafe': data.token,
-            'ts': data.ts,
-            'sign': data.sign,
-            'vid': data.vid
-        });
-      }
+      console.log(data);
+      console.log(data.sign);
+      console.log(data.vid);
+      //this.videoid = data.vid;
+      this.videolink = data.sign;
+      //var options = {
+      //  url: data.sign,
+      //  width: 800
+      //};
+      //var videoPlayer = new Vimeo.Player('Vimeoplay', options);
+      //videoPlayer.setVolume(0);
+      //videoPlayer.on('play', function() {
+      //console.log('Played the video');
+      //});
+      console.log(data.sign);
+      window.open('https://bucket1654575383716.s3.us-west-1.amazonaws.com/testUpload/RCNN.mp4', "_blank", "fullscreen=yes");
+      //let box = this.$refs.watchVideo.$refs.videobox;
+      //if (this.player) {
+      //  this.player.changeVid({
+      //    vid:data.vid,
+      //    playsafe: data.token,
+      //    ts: data.ts,
+      //    sign: data.sign,
+      //    autoplay: true
+      //  });
+      //} else {
+      //  this.player = polyvObject('#player').videoPlayer({
+      //      'width': box.offsetWidth,
+      //      'height': box.offsetHeight,
+      //      'forceH5': true,
+      //      'code': data.code,
+      //      'playsafe': data.token,
+      //      'ts': data.ts,
+      //      'sign': data.sign,
+      //      'vid': data.vid
+      //  });
+      //  console.log(this.player);
+      //}
     }
   },
   mounted () {

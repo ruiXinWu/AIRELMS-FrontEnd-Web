@@ -13,7 +13,7 @@
               <tr>
                 <th>序号</th>
                 <th>题目</th>
-                <th>是否免费</th>
+                <th>是否Free</th>
                 <th>视频</th>
                 <th>课件</th>
                 <th>状态</th>

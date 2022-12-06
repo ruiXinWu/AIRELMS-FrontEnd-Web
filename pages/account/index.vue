@@ -11,43 +11,43 @@
         <div class="main_cont form" v-if="isLogin">
           <form action="" @submit="userEducationInfUpdate">
             <div class="form_group">
-              <!--<div class="label">用户名:</div>-->
+              <!--<div class="label">User Name:</div>-->
               <div class="label">UserName:</div>
               <div class="form_ctl">
                 <div class="text">{{ obj.mobile }}</div>
               </div>
             </div>
             <div class="form_group">
-              <!--<div class="label">昵称:</div>-->
+              <!--<div class="label">Name:</div>-->
               <div class="label">Nickname:</div>
               <div class="form_ctl">
                   <input type="text" v-model="obj.nickname" class="form_input" placeholder="请输入昵称">
               </div>
             </div>
             <div class="form_group">
-              <!--<div class="label">年龄:</div>-->
+              <!--<div class="label">Age:</div>-->
               <div class="label">Age:</div>
               <div class="form_ctl">
                   <input type="text" v-model="obj.age" class="form_input" placeholder="请输入昵称">
               </div>
             </div>
             <div class="form_group">
-              <!--<div class="label">性别:</div>-->
+              <!--<div class="label">Gender:</div>-->
               <div class="label">Gender:</div>
               <div class="form_ctl form_ctl_radio">
                 <input type="radio" v-model="obj.sex" class="radiobox" id="sex1" value="1" name="sex">
-                <!--<label for="sex1">男</label>-->
+                <!--<label for="sex1">Male</label>-->
                 <label for="sex1">Male</label>
                 <input type="radio" v-model="obj.sex" class="radiobox" id="sex2" value="2" name="sex">
-                <!--<label for="sex2">女</label>-->
+                <!--<label for="sex2">Female</label>-->
                 <label for="sex2">Female</label>
                 <input type="radio" v-model="obj.sex" class="radiobox" id="sex3" value="3" name="sex">
-                <label for="sex3">保密</label>
+                <label for="sex3">Secret</label>
                 <!--<label for="sex3">Secrets</label>-->
               </div>
             </div>
             <div class="form_group">
-              <div class="label">讲师头像:</div>
+              <div class="label">Avatar:</div>
               <div class="form_ctl upload_ctl">
                 <input type="hidden" v-model="obj.headImgUrl">
                 <div class="preview">
@@ -68,25 +68,25 @@
         </div>
         <div class="main_cont form" v-else>
           <div class="form_group">
-            <div class="label">用户名:</div>
+            <div class="label">User Name:</div>
             <div class="form_ctl">
               <div class="text">{{ obj.mobile }}</div>
             </div>
           </div>
           <div class="form_group">
-            <div class="label">昵称:</div>
+            <div class="label">Name:</div>
             <div class="form_ctl">
               <div class="text">{{ obj.nickname }}</div>
             </div>
           </div>
           <div class="form_group">
-            <div class="label">年龄:</div>
+            <div class="label">Age:</div>
             <div class="form_ctl">
               <div class="text">{{ obj.age }}</div>
             </div>
           </div>
           <div class="form_group">
-            <div class="label">性别:</div>
+            <div class="label">Gender:</div>
             <div class="form_ctl">
               <div class="text" v-if="obj.sex === 1">男</div>
               <div class="text" v-else-if="obj.sex === 2">女</div>
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="form_group">
-            <div class="label">讲师头像:</div>
+            <div class="label">Avatar:</div>
             <div class="form_ctl upload_ctl">
               <input type="hidden" v-model="obj.headImgUrl">
                 <div class="preview">

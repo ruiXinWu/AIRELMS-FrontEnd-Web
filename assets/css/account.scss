@@ -217,8 +217,16 @@
       position: relative;
       z-index: 9;
     }
+    .form_ctl_1{
+      margin-left: 12px;
+      float: left;
+      width: 700px;
+      line-height: 36px;
+      z-index: 9;
+      color: rgb(20, 26, 220);
+    }
     .text{
-      color: #333;
+      color: rgb(51, 51, 51);
       line-height: 36px;
     }
     &:after{

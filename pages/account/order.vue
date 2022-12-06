@@ -5,9 +5,9 @@
       <y-side :type="'wddd'"></y-side>
       <div class="main_box">
         <ul class="tabs clearfix">
-          <a class="tab" :class="{on: num == 0}" @click="clicktab(0)">所有订单</a>
-          <a class="tab" :class="{on: num == 1}" @click="clicktab(1)">待支付订单</a>
-          <a class="tab" :class="{on: num == 2}" @click="clicktab(2)">已完成订单</a>
+          <a class="tab" :class="{on: num == 0}" @click="clicktab(0)">All Orders</a>
+          <a class="tab" :class="{on: num == 1}" @click="clicktab(1)">Pending Payment</a>
+          <a class="tab" :class="{on: num == 2}" @click="clicktab(2)">Order Completed</a>
         </ul>
         <div class="notdata" v-if="notdata">
           <i class="iconfont">&#xe6be;</i>暂时没有数据

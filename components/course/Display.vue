@@ -22,7 +22,7 @@
               <div>
                 Price:<span v-if="!courseInfo.isFree">${{courseInfo.courseOriginal ? courseInfo.courseOriginal.toFixed(2) : '0.00'}}</span>
                 <!--价格:<span v-if="!courseInfo.isFree">${{courseInfo.courseOriginal ? courseInfo.courseOriginal.toFixed(2) : '0.00'}}</span>-->
-                <!--<span v-else>免费</span>-->
+                <!--<span v-else>Free</span>-->
                 <span v-else>Free</span>
               </div>
             </div>

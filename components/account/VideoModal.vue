@@ -101,6 +101,7 @@ export default {
     },
     // 选择视频
     selVideo (obj) {
+      console.log(obj);
       if (this.videoList && this.videoList.length) {
         this.$msgBox({
           content: '只能选择一个视频',
@@ -109,6 +110,7 @@ export default {
         return
       }
       this.videoList = [obj];
+      console.log(this.videoList);
     },
     // 加入上传列表
     addUpload (e) {

@@ -12,9 +12,9 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_axios_541a0a68 from 'nuxt_plugin_axios_541a0a68' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_message_2594a886 from 'nuxt_plugin_message_2594a886' // Source: ..\\plugins\\message.js (mode: 'all')
-import nuxt_plugin_dragging_a28c35dc from 'nuxt_plugin_dragging_a28c35dc' // Source: ..\\plugins\\dragging.js (mode: 'all')
+import nuxt_plugin_axios_2942675e from 'nuxt_plugin_axios_2942675e' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_message_2594a886 from 'nuxt_plugin_message_2594a886' // Source: ../plugins/message.js (mode: 'all')
+import nuxt_plugin_dragging_a28c35dc from 'nuxt_plugin_dragging_a28c35dc' // Source: ../plugins/dragging.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -176,8 +176,8 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_axios_541a0a68 === 'function') {
-    await nuxt_plugin_axios_541a0a68(app.context, inject)
+  if (typeof nuxt_plugin_axios_2942675e === 'function') {
+    await nuxt_plugin_axios_2942675e(app.context, inject)
   }
 
   if (typeof nuxt_plugin_message_2594a886 === 'function') {

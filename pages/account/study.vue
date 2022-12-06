@@ -5,11 +5,11 @@
       <y-side :type="'xxjl'"></y-side>
       <div class="main_box">
         <ul class="tabs clearfix">
-          <a class="tab on">学习记录</a>
+          <a class="tab on">Study Record</a>
         </ul>
         <div class="main_cont">
           <div class="notdata" v-if="notdata">
-            <i class="iconfont">&#xe6be;</i>暂时没有数据
+            <i class="iconfont">&#xe6be;</i>non - available
           </div>
           <table class="course_table table" v-else>
             <thead>

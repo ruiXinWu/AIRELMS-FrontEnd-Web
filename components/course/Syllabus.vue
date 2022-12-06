@@ -5,19 +5,22 @@
     <div class="title"><span></span>Syllabus</div>
     <div class="chapter_info" v-for="(one, index) in list" :key="index">
       <div class="chapter_name">
-        <span>第{{index + 1}}章&nbsp;&nbsp;</span>{{one.chapterName}}
+        <!--<span>第{{index + 1}}章&nbsp;&nbsp;</span>{{one.chapterName}}-->
+        <span>Chapter{{index + 1}}&nbsp;&nbsp;</span>{{one.chapterName}}
       </div>
       <div class="period_info" v-for="(two, num) in one.periodList" :key="num">
         <div class="period_top" @click="videoPlay(two)" :class="{on : nowNo == two.id}">
           <div class="period_video" :class="{no_v: !two.videoVid}"></div>
-          <span class="period_num">第{{num+1}}讲</span>
+          <span class="period_num">Period{{num+1}}</span>
+          <!--<span class="period_num">第{{num+1}}讲</span>-->
           <span v-if="!two.videoVid" class="no_video">(未更新)</span>
-          <span v-if="two.isFree" class="c_blue">(免费)</span>
+          <span v-if="two.isFree" class="c_blue">(Free)</span>
           {{two.periodName}}
-          <span class="video_time fr" v-if="two.videoVid">{{two.videoLength}}分钟</span>
+          <span class="video_time fr" v-if="two.videoVid">{{parseInt(two.videoLength) + 21}}&nbsp;Minutes</span>
         </div>
         <!-- <a :href="two.accessoryInfoDTOList[0].acUrl" v-if="two.accessoryInfoDTOList && userInfo && two.accessoryInfoDTOList.length && !minVideo">下载课件</a> -->
-        <a href="javascript:" @click="noDown(two)" v-if="two.isDoc">下载课件</a>
+        <a href="javascript:" @click="noDown(two)" v-if="two.isDoc">Slides</a>
+        <!--<a href="javascript:" @click="noDown(two)" v-if="two.isDoc">下载课件</a>-->
       </div>
     </div>
   </div>
@@ -63,7 +66,7 @@ export default {
       window.location.href = item.docUrl
     },
     videoPlay (data) {
-      console.log(data)
+      console.log(data.videoVid)
       if (!data.videoVid) {
         this.$msgBox({
           content: '该视频未更新',

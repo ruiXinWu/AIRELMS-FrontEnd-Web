@@ -34,7 +34,7 @@
             <nuxt-link :to="{name: 'courselDetail', params: {id: item.courseId}}" target="_blank" v-if="item.courseCategory === 1" class="course_name">{{item.courseName}}</nuxt-link>
             <nuxt-link :to="{name: 'liveDetail', params: {id: item.courseId}}" target="_blank" v-if="item.courseCategory === 2" class="course_name">{{item.courseName}}</nuxt-link>
             <nuxt-link :to="{name: 'liveAndBunch', params: {id: item.courseId}}" target="_blank" v-if="item.courseCategory === 3" class="course_name">{{item.courseName}}</nuxt-link>
-            <p class="course_price" v-if="item.isFree">免费</p>
+            <p class="course_price" v-if="item.isFree">Free</p>
             <div class="course_price" v-else>
               ￥{{item.orgPrice}}
               <p v-if="webInfo && webInfo.isEnableVip && item.fabPrice != item.orgPrice" class="font_12 c_gold mgt3">SVIP:{{item.fabPrice ? '￥' + item.fabPrice : '免费'}}</p>

@@ -30,7 +30,7 @@
               <input type="text" v-model="pobj.mobile" placeholder="Please Enter your Email">
               <div class="phone_yzm">
               <!--<input type="text" name="code" placeholder="请输入手机验证码" class="phone" v-model="pobj.code" maxlength="6">-->
-                <input type="text" name="code" placeholder="Please enter your email vertification code" class="phone" v-model="pobj.code" maxlength="6">
+                <input type="text" name="code" placeholder="Enter email vertification code" class="phone" v-model="pobj.code" maxlength="6">
                 <y-button :mobile="pobj.mobile"></y-button>
               </div>
               <!--<input type="password" v-model="pobj.password" placeholder="6-20位密码，可用数字/字母/符号组合">-->
@@ -49,20 +49,26 @@
           </div>
         </div>
         <div class="login_form" v-else>
-          <div class="login_title is_login">欢迎来到{{clientData.name}}</div>
+          <!--<div class="login_title is_login">欢迎来到{{clientData.name}}</div>-->
+          <div class="login_title is_login">Welcome{{airobotoedu}}</div>
           <div class="form_body">
             <div class="img_box">
               <img v-if="userInfo.headImgUrl" :src="userInfo.headImgUrl" alt="" />
               <img v-else src="../assets/image/friend.jpg" alt="" />
             </div>
-            <p class="hellow_text">欢迎来到{{clientData.name}}</p>
+            <!--<p class="hellow_text">欢迎来到{{clientData.name}}</p>-->
+            <p class="hellow_text">Welcome{{airobotoedu}}</p>
             <ul class="btn_box clearfix">
-              <li><nuxt-link :to="{name: 'account-teacher'}">用户中心</nuxt-link></li>
-              <li><nuxt-link :to="{name: 'account-study'}">学习记录</nuxt-link></li>
-              <li><nuxt-link :to="{name: 'account-order'}">我的订单</nuxt-link></li>
+              <li><nuxt-link :to="{name: 'account-teacher'}">User Center</nuxt-link></li>
+              <!--<li><nuxt-link :to="{name: 'account-teacher'}">用户中心</nuxt-link></li>-->
+              <!--<li><nuxt-link :to="{name: 'account-study'}">学习记录</nuxt-link></li>-->
+              <li><nuxt-link :to="{name: 'account-study'}">Learning Record</nuxt-link></li>
+              <!--<li><nuxt-link :to="{name: 'account-order'}">我的订单</nuxt-link></li>-->
+              <li><nuxt-link :to="{name: 'account-order'}">My Order</nuxt-link></li>
             </ul>
             <div>
-              <a href="javascript:" @click="signOut" class="out_btn">退出登录</a>
+              <a href="javascript:" @click="signOut" class="out_btn">Log out</a>
+              <!--<a href="javascript:" @click="signOut" class="out_btn">退出登录</a>-->
             </div>
           </div>
         </div>
@@ -81,11 +87,6 @@
         <span v-html="service.copyright"></span>
       </p>
       <p>
-        <a href="http://www.doityun.com/" target="_blank" class="lingke_link">IT云提供计算服务</a>
-        <span v-if="service.icp">&nbsp;|&nbsp;</span>
-        <a href="http://www.miitbeian.gov.cn/" class="lingke_link" target="_blank">{{service.icp}}</a>
-        <span v-if="service.prn">&nbsp;|&nbsp;</span>
-        <a :href="'http://www.beian.gov.cn/portal/index'" target="_blank" v-if="service.prn" class="lingke_link"><img src="../assets/image/prn_icon.png" class="prn_icon" alt="">&nbsp;{{service.prn}}</a>
       </p>
     </div>
   </div>

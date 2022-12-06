@@ -9,12 +9,13 @@
       </ul>
     </div>
     <div class="menu_panel">
-      <h3 class="title"><i class="iconfont">&#xe60a;</i>个人资料</h3>
+      <!--<h3 class="title"><i class="iconfont">&#xe60a;</i>Info</h3>-->
+      <h3 class="title"><i class="iconfont">&#xe60a;</i>Personal Information</h3>
       <ul class="menus">
-        <li :class="{on: type == 'grxx'}"><router-link :to="{name: 'account'}">个人信息</router-link></li>
-        <li :class="{on: type == 'xgmm'}"><router-link :to="{name: 'account-reset'}">修改密码</router-link></li>
-        <li :class="{on: type == 'wddd'}"><router-link :to="{name: 'account-order'}">我的订单</router-link></li>
-        <li :class="{on: type == 'xxjl'}"><router-link :to="{name: 'account-study'}">学习记录</router-link></li>
+        <li :class="{on: type == 'grxx'}"><router-link :to="{name: 'account'}">Detail</router-link></li>
+        <li :class="{on: type == 'xgmm'}"><router-link :to="{name: 'account-reset'}">Password</router-link></li>
+        <li :class="{on: type == 'wddd'}"><router-link :to="{name: 'account-order'}">Order</router-link></li>
+        <li :class="{on: type == 'xxjl'}"><router-link :to="{name: 'account-study'}">Record</router-link></li>
       </ul>
     </div>
   </header>

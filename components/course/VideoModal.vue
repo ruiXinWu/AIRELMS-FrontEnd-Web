@@ -23,7 +23,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.data)
+    console.log(this.data);
     /* eslint-disable*/
     this.videoPlay(this.data.vid);
   },
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     videoPlay (vid){
-      console.log(this.data)
+      console.log(this.data);
       let vobj = {
         userNo: this.userInfo.userNo,
         periodNo: this.data.periodNo,
@@ -43,9 +43,10 @@ export default {
         vobj.courseCategory = 3
         vobj.periodNo = this.data.accessoryNo
       }
-      console.log(vobj)
+      console.log(vobj);
+      console.log(res);
       chapterSign(vobj).then(res => {
-        console.log(res)
+        console.log(res);
         if (res.code === 200) {
           this.play(Object.assign({vid: vid}, res.data));
         } else if (res.code === 402) {
@@ -57,7 +58,8 @@ export default {
       })
     },
     play (data) {
-      console.log(data)
+      console.log(data);
+      console.log(data.sign);
       let box = this.$refs.playerbox;
       if (this.player) {
         this.player.changeVid({

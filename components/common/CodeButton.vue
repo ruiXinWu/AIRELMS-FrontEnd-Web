@@ -13,7 +13,7 @@ export default {
   },
   data () {
     return {
-      txt: '获取验证码',
+      txt: 'Get',
       disabled: false
     }
   },
@@ -67,7 +67,7 @@ export default {
   button{
     line-height: 33px;
     padding: 0;
-    width: 100px;
+    width: 50px;
     background-color: #107bc5;
     border: 1px solid #0f75bb;
     color: #fff;

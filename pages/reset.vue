@@ -9,21 +9,24 @@
             </nuxt-link>
           </div>
           <p>
-            已有账号，<nuxt-link :to="{name: 'login'}">立即登陆</nuxt-link><span></span><nuxt-link :to="{name: 'index'}">返回首页</nuxt-link>
+            Has Account，<nuxt-link :to="{name: 'login'}">Login in</nuxt-link><span></span><nuxt-link :to="{name: 'index'}">Back to Home Page</nuxt-link>
           </p>
         </div>
         <div class="register_content">
-          <div class="register_title">修改密码</div>
+          <!--<div class="register_title">修改密码</div>-->
+          <div class="register_title">Reset Password</div>
           <form action="" @submit="resetPsw">
             <div class="form_group">
-              <div class="label">手机号:</div>
+              <!--<div class="label">手机号:</div>-->
+              <div class="label">Email:</div>
               <div class="form_ctl">
                 <input type="text" maxlength="11" @change="enterPhone" v-model="obj.mobile">
                 <p class="err" v-show="errTip0">{{errTip0}}</p>
               </div>
             </div>
             <div class="form_group">
-              <div class="label">验证码:</div>
+              <div class="label">Vertification:</div>
+              <!--<div class="label">验证码:</div>-->
               <div class="form_ctl">
                 <input type="text" maxlength="6" v-model="obj.code" name="code" @change="enter">
                 <y-button :mobile="obj.mobile" />
@@ -31,14 +34,16 @@
               </div>
             </div>
             <div class="form_group">
-              <div class="label">新密码:</div>
+              <!--<div class="label">新密码:</div>-->
+              <div class="label">New Password:</div>
               <div class="form_ctl">
                 <input type="password" v-model="obj.newPassword" @change="enter" name="password">
                 <p class="err" v-show="errTip2">{{errTip2}}</p>
               </div>
             </div>
             <div class="form_group">
-              <div class="label">重复密码:</div>
+              <!--<div class="label">重复密码:</div>-->
+              <div class="label">Re-Enter:</div>
               <div class="form_ctl">
                 <input type="password" v-model="obj.confirmPassword" @change="enter" name="repassword">
                 <p class="err" v-show="errTip3">{{errTip3}}</p>
@@ -47,7 +52,8 @@
             <div class="form_group">
               <div class="label">&nbsp;</div>
               <div class="form_ctl">
-                <input type="submit" class="submit_btn" value="确定">
+                <!--<input type="submit" class="submit_btn" value="确定">-->
+                <input type="submit" class="submit_btn" value="Confirm">
               </div>
             </div>
           </form>
