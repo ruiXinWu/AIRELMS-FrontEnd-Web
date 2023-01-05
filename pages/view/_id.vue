@@ -1,9 +1,13 @@
 <template>
   <div class="course_detail">
-    <y-watch-video  v-if="courseInfo.isPay" :courseInfo="courseInfo" @playfunc="videoPlay" :nowNo="nowPeriodNo" ref="watchVideo"></y-watch-video>
+    <y-watch-video  v-if="courseInfo.isPay" :courseInfo="courseInfo" @debug="getVideoInstance" @playfunc="videoPlay" :nowNo="nowPeriodNo" ref="watchVideo"></y-watch-video>
     <y-display v-else :courseInfo="courseInfo" ref="watchVideo"></y-display>
+
+
+
+
     <div class=" detail_info detail_box clearfix">
-      <div class="layout_left">
+      <div class="layout_left"> 
         <ul class="course_tab clearfix">
           <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">About</a></li>
           <!-- <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">课程介绍</a></li> -->
@@ -17,7 +21,7 @@
           <!--<y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>-->
         </div>
 
-  
+
 
         <div class="content_info"  v-if="tab == 'big'">
           <y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>
@@ -68,6 +72,7 @@ import YDisplay from '~/components/course/Display'
 import YFooter from '~/components/common/Footer'
 //import VimeoPlayer from '~/components/common/VimeoPlayer'
 //import YvueVideo from '~/components/common/vueVideo'
+import Artplayer from '~/components/Artplayer'
 import YSyllabus from '~/components/course/Syllabus'
 import YWatchVideo from '~/components/course/WatchVideo'
 import {courseDetail, userCourseDetail, chapterSign} from '~/api/course.js'
@@ -77,6 +82,7 @@ export default {
     YDisplay,
     YSyllabus,
     YWatchVideo,
+    Artplayer
 //    YvueVideo
 //    VimeoPlayer,
   },
@@ -85,13 +91,17 @@ export default {
       title: '课程详情'
     }
   },
+  props: {
+    
+  }, 
   data () {
     return {
+      art: null,
       tab: 'info',
       nowPeriodNo: '',    //当前播放章节
                    //当前播放Vimeo视频id
       videolink:'', //当前播放Vimeo视频link
-      //videoid:'', 
+      //videoid:'',
     }
   },
   validate ({ params }) {
@@ -99,12 +109,12 @@ export default {
     return /^\d+$/.test(params.id)
   },
   async asyncData(context) {
+    console.log(3333)
     //我觉得这里是拿数据的关键，asyncData 获取到从了userCourseDetail 的数据变为了courseInfo 和 teacherinfo（很可能是这里全局变量）
     let tk = context.store.state.tokenInfo;
     try {
       let result = new Object();
       if (tk) {//有token info
-
         let {data} = await userCourseDetail({courseId: context.params.id}, tk);
         if (data.code == 200) {
           result.courseInfo = data.data;
@@ -133,6 +143,9 @@ export default {
         }
       }
       console.log(result.courseInfo.quiz);
+
+
+      console.log("AAAAAAAAAAAAAAAAAAAAA")
       console.log(result.courseInfo);
       return result
     } catch (e) {
@@ -178,10 +191,15 @@ export default {
       console.log(data);
       console.log(data.sign);
       console.log(data.vid);
-      //this.videoid = data.vid;
+      this.videoid = data.vid;
       this.videolink = data.sign;
+
+      //this.art.url = 'http://techslides.com/demos/sample-videos/small.mp4';
+      this.art.url = data.sign;
+      this.art.play();
+
       //var options = {
-      //  url: data.sign,
+      //  url: data.sign,name
       //  width: 800
       //};
       //var videoPlayer = new Vimeo.Player('Vimeoplay', options);
@@ -189,8 +207,8 @@ export default {
       //videoPlayer.on('play', function() {
       //console.log('Played the video');
       //});
-      console.log(data.sign);
-      window.open('https://bucket1654575383716.s3.us-west-1.amazonaws.com/testUpload/RCNN.mp4', "_blank", "fullscreen=yes");
+      //console.log(data.sign);
+      //window.open('https://bucket1654575383716.s3.us-west-1.amazonaws.com/testUpload/RCNN.mp4', "_blank", "fullscreen=yes");
       //let box = this.$refs.watchVideo.$refs.videobox;
       //if (this.player) {
       //  this.player.changeVid({
@@ -213,6 +231,9 @@ export default {
       //  });
       //  console.log(this.player);
       //}
+    },
+    getVideoInstance (data) {
+      this.art = data.art
     }
   },
   mounted () {

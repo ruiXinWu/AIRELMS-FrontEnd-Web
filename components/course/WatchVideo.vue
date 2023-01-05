@@ -27,6 +27,7 @@
       <div class="video_content clearfix" :class="{show_panel: cateType}">
         <div class="win_box">
           <div class="video_win" id="player" ref="videobox" :style="'background-image:url('+courseInfo.courseLogo+')'">
+            <Artplayer @get-instance="getInstance" :option="option" :style="style" />
           <!--<div class="video_win" id="player" ref="videobox" img="~/assets/image/logo_bg.jpg">-->
           <!--填入新的图片-->
           </div>
@@ -70,7 +71,12 @@
   </div>
 </template>
 <script>
+import Artplayer from '~/components/Artplayer'
+
 export default {
+  components: {
+    Artplayer
+  },
   props: {
     courseInfo: {
       type: Object,
@@ -87,7 +93,15 @@ export default {
       showTop: false,
       cateType: 0,
       clientData: this.$store.state.clientData,
-      userInfo: ''
+      userInfo: '',
+      option: {
+        poster: this.courseInfo.courseLogo,
+        url: "https://artplayer.org/assets/sample/video.mp4",
+      },
+      style: {
+        width: "820px",
+        height: "510px"
+      }
     }
   },
   methods: {
@@ -134,6 +148,10 @@ export default {
         return false;
       }
       this.$emit('playfunc', data)
+    },
+    getInstance(art) {
+      console.log(art);
+      this.$emit('debug', {art: art})
     }
   },
   mounted () {
@@ -242,7 +260,6 @@ export default {
       height: 510px;
       margin: 50px 0;
       border-radius: 8px;
-      border: 5px solid #000;
     }
     .video_win {
       //width: 1110px;

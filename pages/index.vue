@@ -126,7 +126,7 @@
     </div>
     <y-footer></y-footer>
     <right-tap></right-tap>
-    <div class="videoAlert" v-if="isvideoAlert">
+    <!--<div class="videoAlert" v-if="isvideoAlert">
       <div class="videoAlertbox">
         <a href="https://edu.roncoo.net/video"  target="_blank">
           <img
@@ -142,7 +142,7 @@
           alt="视频点播平台"
         />
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>

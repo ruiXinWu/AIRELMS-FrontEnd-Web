@@ -21,11 +21,7 @@
         <div class="h_logo">
         <!--<img src="require('./assets/image/logo1.png')">-->
         <!--<img v-bind:src="require('./assets/image/logo1.png')" />-->
-        <!--    <a :href="mainUrl">
-               <img :src="webInfo.logoImg" alt="" v-if="webInfo">
-             </a>
-             -->
-          <img class="logo" src="~/assets/image/Logo2.png" alt="">
+          <a href = "/"><img class="logo" src="~/assets/image/Logo2.png" alt=""></a>
       </div>
       <ul class="h_nav_ul clearfix" v-if="!hideTop && navList">
         <li v-for="(item, index) in navList" :key="index">

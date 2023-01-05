@@ -56,7 +56,7 @@
             <div class="form_group">
               <div class="label">手机号:</div>
               <div class="form_ctl">
-                <input type="text" maxlength="11" placeholder="请输入注册手机号" v-model="obj.mobile">
+                <input type="text" placeholder="请输入注册手机号" v-model="obj.mobile">
                 <p class="err" v-show="errTip0">{{errTip0}}</p>
               </div>
             </div>

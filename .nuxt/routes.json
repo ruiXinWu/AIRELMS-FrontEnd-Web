@@ -1,0 +1,121 @@
+[
+  {
+    "name": "account",
+    "path": "/account",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\index.vue",
+    "chunkName": "pages/account/index"
+  },
+  {
+    "name": "apply",
+    "path": "/apply",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\apply.vue",
+    "chunkName": "pages/apply"
+  },
+  {
+    "name": "list",
+    "path": "/list",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\list.vue",
+    "chunkName": "pages/list"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\login.vue",
+    "chunkName": "pages/login"
+  },
+  {
+    "name": "recruit",
+    "path": "/recruit",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit.vue",
+    "chunkName": "pages/recruit"
+  },
+  {
+    "name": "reset",
+    "path": "/reset",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\reset.vue",
+    "chunkName": "pages/reset"
+  },
+  {
+    "name": "account-earnings",
+    "path": "/account/earnings",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\earnings.vue",
+    "chunkName": "pages/account/earnings"
+  },
+  {
+    "name": "account-order",
+    "path": "/account/order",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\order.vue",
+    "chunkName": "pages/account/order"
+  },
+  {
+    "name": "account-reset",
+    "path": "/account/reset",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\reset.vue",
+    "chunkName": "pages/account/reset"
+  },
+  {
+    "name": "account-study",
+    "path": "/account/study",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\study.vue",
+    "chunkName": "pages/account/study"
+  },
+  {
+    "name": "account-teacher",
+    "path": "/account/teacher",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\index.vue",
+    "chunkName": "pages/account/teacher/index"
+  },
+  {
+    "name": "account-teacher-add",
+    "path": "/account/teacher/add",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\add.vue",
+    "chunkName": "pages/account/teacher/add"
+  },
+  {
+    "name": "account-teacher-check",
+    "path": "/account/teacher/check",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\check.vue",
+    "chunkName": "pages/account/teacher/check"
+  },
+  {
+    "name": "account-teacher-course",
+    "path": "/account/teacher/course",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\course.vue",
+    "chunkName": "pages/account/teacher/course"
+  },
+  {
+    "name": "account-teacher-period",
+    "path": "/account/teacher/period",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\period.vue",
+    "chunkName": "pages/account/teacher/period"
+  },
+  {
+    "name": "account-teacher-praxis",
+    "path": "/account/teacher/praxis",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\praxis.vue",
+    "chunkName": "pages/account/teacher/praxis"
+  },
+  {
+    "name": "terrace-id",
+    "path": "/terrace/:id?",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\terrace\\\\_id.vue",
+    "chunkName": "pages/terrace/_id"
+  },
+  {
+    "name": "view-id",
+    "path": "/view/:id?",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\view\\\\_id.vue",
+    "chunkName": "pages/view/_id"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
+  },
+  {
+    "name": "custom",
+    "path": "*",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\index.vue"
+  }
+]

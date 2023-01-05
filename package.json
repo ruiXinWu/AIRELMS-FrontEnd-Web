@@ -15,6 +15,7 @@
   "dependencies": {
     "@gauseen/nuxt-proxy": "^1.0.1",
     "@nuxtjs/axios": "^5.0.0",
+    "artplayer": "^4.5.12",
     "awe-dnd": "^0.3.4",
     "axios": "^0.21.2",
     "bootstrap": "^5.2.2",
@@ -36,7 +37,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "nodemon": "^1.11.0",
+    "nodemon": "^2.0.20",
     "sass": "^1.53.0",
     "sass-loader": "^7.1.0"
   }

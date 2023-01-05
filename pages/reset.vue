@@ -20,7 +20,7 @@
               <!--<div class="label">手机号:</div>-->
               <div class="label">Email:</div>
               <div class="form_ctl">
-                <input type="text" maxlength="11" @change="enterPhone" v-model="obj.mobile">
+                <input type="text" maxlength="100" @change="enterPhone" v-model="obj.mobile">
                 <p class="err" v-show="errTip0">{{errTip0}}</p>
               </div>
             </div>
@@ -127,12 +127,12 @@ export default {
     },
     // 输入手机
     enterPhone () {
-      if (this.obj.mobile.length === 11) {
-        if ((/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(this.obj.mobile.trim()))) {
+      if (this.obj.mobile.length >= 0) {
+        if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/).test(this.obj.mobile)) {
           this.errTip0 = false;
           this.getCodeBtn = true;
         } else {
-          this.errTip0 = '请输入正确手机';
+          this.errTip0 = '请输入正确的邮箱';
           this.getCodeBtn = false;
         }
       } else {
@@ -148,7 +148,7 @@ export default {
     },
     resetPsw (e) {
       e.preventDefault()
-      if (!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(this.obj.mobile.trim()))) {
+      if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/).test(this.obj.mobile)) {
         this.showMsg('请输入正确格式的手机号码')
         return
       }
