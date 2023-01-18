@@ -12,6 +12,12 @@
     "chunkName": "pages/apply"
   },
   {
+    "name": "companyInfo",
+    "path": "/companyInfo",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\companyInfo.vue",
+    "chunkName": "pages/companyInfo"
+  },
+  {
     "name": "list",
     "path": "/list",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\list.vue",
@@ -28,6 +34,12 @@
     "path": "/recruit",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit.vue",
     "chunkName": "pages/recruit"
+  },
+  {
+    "name": "recruit_backup",
+    "path": "/recruit_backup",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit_backup.vue",
+    "chunkName": "pages/recruit_backup"
   },
   {
     "name": "reset",

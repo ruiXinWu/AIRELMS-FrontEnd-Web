@@ -6,9 +6,11 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _903295d4 = () => interopDefault(import('..\\pages\\account\\index.vue' /* webpackChunkName: "pages/account/index" */))
 const _1b6f8c6d = () => interopDefault(import('..\\pages\\apply.vue' /* webpackChunkName: "pages/apply" */))
+const _a1da8fec = () => interopDefault(import('..\\pages\\companyInfo.vue' /* webpackChunkName: "pages/companyInfo" */))
 const _2bba5def = () => interopDefault(import('..\\pages\\list.vue' /* webpackChunkName: "pages/list" */))
 const _30ad82e8 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
 const _4b272b06 = () => interopDefault(import('..\\pages\\recruit.vue' /* webpackChunkName: "pages/recruit" */))
+const _8ea74d18 = () => interopDefault(import('..\\pages\\recruit_backup.vue' /* webpackChunkName: "pages/recruit_backup" */))
 const _0fc84dce = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages/reset" */))
 const _93769ed6 = () => interopDefault(import('..\\pages\\account\\earnings.vue' /* webpackChunkName: "pages/account/earnings" */))
 const _5e9d14dc = () => interopDefault(import('..\\pages\\account\\order.vue' /* webpackChunkName: "pages/account/order" */))
@@ -44,6 +46,10 @@ export const routerOptions = {
     component: _1b6f8c6d,
     name: "apply"
   }, {
+    path: "/companyInfo",
+    component: _a1da8fec,
+    name: "companyInfo"
+  }, {
     path: "/list",
     component: _2bba5def,
     name: "list"
@@ -55,6 +61,10 @@ export const routerOptions = {
     path: "/recruit",
     component: _4b272b06,
     name: "recruit"
+  }, {
+    path: "/recruit_backup",
+    component: _8ea74d18,
+    name: "recruit_backup"
   }, {
     path: "/reset",
     component: _0fc84dce,
