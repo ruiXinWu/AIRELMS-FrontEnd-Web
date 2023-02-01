@@ -1,48 +1,70 @@
 <template>
   <div class="course_detail">
-    <y-watch-video  v-if="courseInfo.isPay" :courseInfo="courseInfo" @debug="getVideoInstance" @playfunc="videoPlay" :nowNo="nowPeriodNo" ref="watchVideo"></y-watch-video>
+    <y-watch-video
+      v-if="courseInfo.isPay"
+      :courseInfo="courseInfo"
+      @debug="getVideoInstance"
+      @playfunc="videoPlay"
+      :nowNo="nowPeriodNo"
+      ref="watchVideo"
+    ></y-watch-video>
     <y-display v-else :courseInfo="courseInfo" ref="watchVideo"></y-display>
 
-
-
-
-    <div class=" detail_info detail_box clearfix">
-      <div class="layout_left"> 
+    <div class="detail_info detail_box clearfix">
+      <div class="layout_left">
         <ul class="course_tab clearfix">
-          <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">About</a></li>
+          <li :class="{ on: tab == 'info' }">
+            <a href="javascript:" @click="tab = 'info'">About</a>
+          </li>
           <!-- <li :class="{on: tab == 'info'}"><a href="javascript:" @click="tab = 'info'">课程介绍</a></li> -->
-          <li :class="{on: tab == 'big'}"><a href="javascript:" @click="tab = 'big'">Syllabus</a></li>
+          <li :class="{ on: tab == 'big' }">
+            <a href="javascript:" @click="tab = 'big'">Syllabus</a>
+          </li>
           <!--<li :class="{on: tab == 'big'}"><a href="javascript:" @click="tab = 'big'">录播课程</a></li>-->
-          <li :class="{on: tab == 'quiz'}"><a href="javascript:" @click="tab = 'quiz'">Quiz</a></li>
-          <li :class="{on: tab == 'project'}"><a href="javascript:" @click="tab = 'project'">Project</a></li>
+          <li :class="{ on: tab == 'quiz' }">
+            <a href="javascript:" @click="tab = 'quiz'">Quiz</a>
+          </li>
+          <li :class="{ on: tab == 'project' }">
+            <a href="javascript:" @click="tab = 'project'">Project</a>
+          </li>
         </ul>
-        <div class="content_info"  v-if="tab == 'info'">
+        <div class="content_info" v-if="tab == 'info'">
           <div class="introduce" v-html="courseInfo.introduce"></div>
           <!--<y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>-->
         </div>
 
-
-
-        <div class="content_info"  v-if="tab == 'big'">
-          <y-syllabus @playfunc="videoPlay" :list="courseInfo.chapterList" :nowNo="nowPeriodNo"></y-syllabus>
+        <div class="content_info" v-if="tab == 'big'">
+          <y-syllabus
+            @playfunc="videoPlay"
+            :list="courseInfo.chapterList"
+            :nowNo="nowPeriodNo"
+          ></y-syllabus>
         </div>
-        <div class="content_info"  v-if="tab == 'quiz'">
-        <!-- here this is only for demo, in real case,我上次在这里 we need to subsitute this -->
-        <!--src="https://airobotoedu.wispform.com/6f47dd49"-->
-        <!--上面链接是最终要达到的效果，下面src部分是从后端拿的数据-->
+        <div class="content_info" v-if="tab == 'quiz'">
+          <!-- here this is only for demo, in real case,我上次在这里 we need to subsitute this -->
+          <!--src="https://airobotoedu.wispform.com/6f47dd49"-->
+          <!--上面链接是最终要达到的效果，下面src部分是从后端拿的数据-->
           <!--<div class="quiz" v-html="courseInfo.quiz"></div>-->
-          <iframe 
-              v-bind:src="courseInfo.quiz"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              style="height:840px; width:640px">
-              Loading...
+          <iframe
+            v-bind:src="courseInfo.quiz"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            style="height: 840px; width: 640px"
+          >
+            Loading...
           </iframe>
         </div>
-        <div class="content_info"  v-if="tab == 'project'">
+        <div class="content_info" v-if="tab == 'project'">
           <!--<vs-button color="primary" type="relief" icon="star" target :href="{url: project}">Click Here to see project</vs-button>-->
-          <button style="background-color:blue; width:100px; height:40px"><a style="color:white" href="https://colab.research.google.com/drive/1wS8DC7dcJhV_f3fcDIxwfZGz28z37YQH" role="button">Open Project</a></button>
+          <button style="background-color: blue; width: 100px; height: 40px">
+            <a
+              style="color: white"
+              href="https://colab.research.google.com/drive/1wS8DC7dcJhV_f3fcDIxwfZGz28z37YQH"
+              role="button"
+              >Open Project</a
+            >
+          </button>
           <!--<div class="project_introduce" v-html="'if you meet any question, pay to see me in office hour'"></div>-->
         </div>
       </div>
@@ -54,9 +76,13 @@
             <div class="teacher_msg_right">
               <!--<img class="teacher_phone" v-if="teacherInfo.headImgUrl" :src="teacherInfo.headImgUrl" alt="">-->
               <!--<img class="teacher_phone" v-else src="~/assets/image/friend.jpg" alt="">-->
-              <img class="teacher_phone" src="~/assets/image/logo1.png" alt="">
+              <img
+                class="teacher_phone"
+                src="~/assets/image/logo1.png"
+                alt=""
+              />
               <div class="teacher_name">
-                {{teacherInfo.lecturerName}}
+                {{ teacherInfo.lecturerName }}
               </div>
               <div v-html="teacherInfo.introduce" class="info_box"></div>
             </div>
@@ -68,126 +94,129 @@
   </div>
 </template>
 <script>
-import YDisplay from '~/components/course/Display'
-import YFooter from '~/components/common/Footer'
+import YDisplay from "~/components/course/Display";
+import YFooter from "~/components/common/Footer";
 //import VimeoPlayer from '~/components/common/VimeoPlayer'
 //import YvueVideo from '~/components/common/vueVideo'
-import Artplayer from '~/components/Artplayer'
-import YSyllabus from '~/components/course/Syllabus'
-import YWatchVideo from '~/components/course/WatchVideo'
-import {courseDetail, userCourseDetail, chapterSign} from '~/api/course.js'
+import Artplayer from "~/components/Artplayer";
+import YSyllabus from "~/components/course/Syllabus";
+import YWatchVideo from "~/components/course/WatchVideo";
+import { courseDetail, userCourseDetail, chapterSign } from "~/api/course.js";
 export default {
   components: {
     YFooter,
     YDisplay,
     YSyllabus,
     YWatchVideo,
-    Artplayer
-//    YvueVideo
-//    VimeoPlayer,
+    Artplayer,
+    //    YvueVideo
+    //    VimeoPlayer,
   },
-  head () {
+  head() {
     return {
-      title: '课程详情'
-    }
+      title: "课程详情",
+    };
   },
-  props: {
-    
-  }, 
-  data () {
+  props: {},
+  data() {
     return {
       art: null,
-      tab: 'info',
-      nowPeriodNo: '',    //当前播放章节
-                   //当前播放Vimeo视频id
-      videolink:'', //当前播放Vimeo视频link
+      tab: "info",
+      nowPeriodNo: "", //当前播放章节
+      //当前播放Vimeo视频id
+      videolink: "", //当前播放Vimeo视频link
       //videoid:'',
-    }
+    };
   },
-  validate ({ params }) {
+  validate({ params }) {
     // 必须是number类型
-    return /^\d+$/.test(params.id)
+    return /^\d+$/.test(params.id);
   },
   async asyncData(context) {
-    console.log(3333)
+    console.log(3333);
     //我觉得这里是拿数据的关键，asyncData 获取到从了userCourseDetail 的数据变为了courseInfo 和 teacherinfo（很可能是这里全局变量）
     let tk = context.store.state.tokenInfo;
     try {
       let result = new Object();
-      if (tk) {//有token info
-        let {data} = await userCourseDetail({courseId: context.params.id}, tk);
+      if (tk) {
+        //有token info
+        let { data } = await userCourseDetail(
+          { courseId: context.params.id },
+          tk
+        );
         if (data.code == 200) {
           result.courseInfo = data.data;
-          result.project = 'https://colab.research.google.com/drive/1wS8DC7dcJhV_f3fcDIxwfZGz28z37YQH';
+          result.project =
+            "https://colab.research.google.com/drive/1wS8DC7dcJhV_f3fcDIxwfZGz28z37YQH";
           console.log(result.courseInfo.quiz);
           console.log(result.courseInfo.quiz);
           result.teacherInfo = data.data.lecturer;
           result.isbuy = false;
           result.isLogin = false;
-        }else if (data.code >= 300 && data.code <= 400){
+        } else if (data.code >= 300 && data.code <= 400) {
           // context.redirect('login');
-          context.store.dispatch('REDIRECT_LOGIN')
-        }else{
+          context.store.dispatch("REDIRECT_LOGIN");
+        } else {
           result.courseInfo = null;
         }
-      } else{
+      } else {
         //be careful, 这里是courseDetail, 不是userCourseDetail， 和上面不太一样
-        let {data} = await courseDetail({courseId: context.params.id});
+        let { data } = await courseDetail({ courseId: context.params.id });
         if (data.code == 200) {
           result.courseInfo = data.data;
           result.teacherInfo = data.data.lecturer;
           result.isbuy = false;
           result.isLogin = false;
-        }else{
+        } else {
           result.courseInfo = null;
         }
       }
       console.log(result.courseInfo.quiz);
 
-
-      console.log("AAAAAAAAAAAAAAAAAAAAA")
+      console.log("AAAAAAAAAAAAAAAAAAAAA");
       console.log(result.courseInfo);
-      return result
+      return result;
     } catch (e) {
-      context.error({ message: 'User not found', statusCode: 404 })
+      context.error({ message: "User not found", statusCode: 404 });
     }
-    
   },
   methods: {
-    videoPlay (data) {
+    videoPlay(data) {
       console.log(data);
       if (this.courseInfo.isPay || data.isFree) {
-      window.scrollTo(0, 0)
-      this.nowPeriodNo = data.id
-      console.log("12345");
-      chapterSign({
-        ip: 'string',
-        periodId: data.id,
-        videoVid: data.videoVid
-      }).then(res => {
-        res = res.data
-        console.log(res);
-        this.isResetVideo = false
-        if (res.code === 200) {
-          this.play(Object.assign({vid: data.videoVid}, res.data));
-        } else if (res.code === 402) {
-          this.$msgBox({
-            content: '购买后才可以观看',
-            isShowCancelBtn: false
+        window.scrollTo(0, 0);
+        this.nowPeriodNo = data.id;
+        console.log("12345");
+        chapterSign({
+          ip: "string",
+          periodId: data.id,
+          videoVid: data.videoVid,
+        })
+          .then((res) => {
+            res = res.data;
+            console.log(res);
+            this.isResetVideo = false;
+            if (res.code === 200) {
+              this.play(Object.assign({ vid: data.videoVid }, res.data));
+            } else if (res.code === 402) {
+              this.$msgBox({
+                content: "购买后才可以观看",
+                isShowCancelBtn: false,
+              });
+            }
           })
-        }
-      }).catch(() => {
-        this.isResetVideo = false
-      })
+          .catch(() => {
+            this.isResetVideo = false;
+          });
       } else {
         this.$msgBox({
-          content: '购买后才可以播放',
-          isShowCancelBtn: false
-        })
+          content: "购买后才可以播放",
+          isShowCancelBtn: false,
+        });
         return false;
       }
     },
-    play (data) {
+    play(data) {
       console.log(data);
       console.log(data.sign);
       console.log(data.vid);
@@ -232,16 +261,15 @@ export default {
       //  console.log(this.player);
       //}
     },
-    getVideoInstance (data) {
-      this.art = data.art
-    }
+    getVideoInstance(data) {
+      this.art = data.art;
+    },
   },
-  mounted () {
-  }
-}
+  mounted() {},
+};
 </script>
 <style lang="scss" rel="stylesheet/scss">
-.course_detail{
+.course_detail {
   .detail_info {
     margin: 20px auto 60px;
     width: 1200px;
@@ -253,7 +281,7 @@ export default {
       margin-bottom: 30px;
     }
   }
-  .course_tab{
+  .course_tab {
     padding-left: 30px;
     background: #fff;
     border-radius: 8px;
@@ -264,9 +292,9 @@ export default {
       line-height: 66px;
       margin-right: 80px;
       &.on {
-        border-bottom: 2px solid #D51423;
+        border-bottom: 2px solid #d51423;
         a {
-          color: #D51423;
+          color: #d51423;
         }
       }
       a {
@@ -275,12 +303,12 @@ export default {
         font-weight: 700;
         &:hover {
           text-decoration: none;
-          color: #D51423;
+          color: #d51423;
         }
       }
     }
   }
-  .content_info{
+  .content_info {
     padding: 30px;
     background: #fff;
     border-radius: 8px;
@@ -293,14 +321,14 @@ export default {
       font-weight: 700;
       margin-bottom: 25px;
     }
-    .introduce{
+    .introduce {
       font-size: 14px;
       line-height: 30px;
       color: #333;
       padding-left: 8px;
     }
   }
-  .layout_right{
+  .layout_right {
     width: 260px;
     float: right;
   }
@@ -327,7 +355,7 @@ export default {
       line-height: 46px;
       font-size: 13px;
       color: #999;
-      float:left;
+      float: left;
       margin: 0px 10px 0 10px;
       img {
         width: 46px;

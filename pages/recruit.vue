@@ -50,51 +50,29 @@
         </ul>
       </div>
       <div class="person_content1">
-        <ul class="article_List">
-          <li>
-            <article class="sub_Article">
-              <h2>Machine Learning Engineer</h2>
-              <p>
-                Machine learning engineers act as critical members of the data
-                science team. Their tasks involve researching, building, and
-                designing the artificial intelligence responsible for machine
-                learning and maintaining and improving existing artificial
-                intelligence systems.
-              </p>
+        <ul>
+          <li
+            v-for="(item, index) in pageObj.list"
+            :key="index"
+            class="article_List"
+          >
+            <h2>{{ item.programName }}</h2>
+            <p>{{ item.programLogo }}</p>
+            <!--<nuxt-link target="_blank" :to="{name: 'view-id', params: {id: item.id}}" class="course_info">-->
+            <div class="align_right">
+              <span style="float: left; margin-left: 18px">
+                <span>
+                  <button class="small_button" type="button">
+                    {{ item.id }}
+                  </button>
+                </span>
+              </span>
               <button class="View_Program_button" type="button">
-                View Program
+                <nuxt-link :to="{ name: 'ProgramDetails' }" class="button_link"
+                  >View Program</nuxt-link
+                >
               </button>
-            </article>
-          </li>
-          <li>
-            <article class="sub_Article">
-              <h2>AI Robotics Engineer</h2>
-              <p>
-                Machine learning engineers act as critical members of the data
-                science team. Their tasks involve researching, building, and
-                designing the artificial intelligence responsible for machine
-                learning and maintaining and improving existing artificial
-                intelligence systems.
-              </p>
-              <button class="View_Program_button" type="button">
-                View Program
-              </button>
-            </article>
-          </li>
-          <li>
-            <article class="sub_Article">
-              <h2>Deep Learning Engineer</h2>
-              <p>
-                Machine learning engineers act as critical members of the data
-                science team. Their tasks involve researching, building, and
-                designing the artificial intelligence responsible for machine
-                learning and maintaining and improving existing artificial
-                intelligence systems.
-              </p>
-              <button class="View_Program_button" type="button">
-                View Program
-              </button>
-            </article>
+            </div>
           </li>
         </ul>
       </div>
@@ -106,8 +84,7 @@
 import YHeader from "~/components/common/Header";
 import YFooter from "~/components/common/Footer";
 import YSide from "~/components/TerraceSide";
-//import { Button } from "ant-design-vue";
-//import "ant-design-vue/dist/antd.css";
+import { programList } from "~/api/program.js";
 export default {
   head() {
     return {
@@ -130,6 +107,51 @@ export default {
     return {
       webInfo: this.$store.state.webInfo,
     };
+  },
+  async asyncData(context) {
+    let dataObj = {};
+    let clientNo = context.store.state.clientData.no;
+    dataObj.clientNo = clientNo;
+    dataObj.webInfo = context.store.state.webInfo;
+    let obj = {
+      pageCurrent: 1,
+      pageSize: 20,
+    };
+    let pageObj = {
+      list: [],
+      pageCurrent: "",
+      pageSize: "",
+      totalCount: "",
+      totalPage: "",
+    };
+    //let classObj = {
+    //  categoryType: 5,
+    //  orgNo: clientNo
+    //}
+    try {
+      let allData = await Promise.all([programList(obj)]);
+      console.log("This is allData");
+      console.log(allData);
+      // Program列表
+      let programData = allData[0];
+      console.log("This is programData");
+      console.log(programData);
+      if (programData.data.data.list.length > 0) {
+        pageObj = programData.data.data;
+        console.log("This is pageObj");
+        console.log(pageObj);
+      }
+      // 分类
+      //let classData = await allData[1];
+      //let classList = classData.data.data.courseCategoryList || [];
+      dataObj.obj = obj;
+      dataObj.pageObj = pageObj;
+      console.log("This is dataObj");
+      console.log(dataObj);
+      return dataObj;
+    } catch (e) {
+      context.error({ message: "User not found", statusCode: 404 });
+    }
   },
   methods: {
     goApply() {
@@ -207,34 +229,46 @@ export default {
 .title_AIRE {
   padding: 30px 50px 30px;
   min-height: 80px;
-  font-size: 14px;
   color: #333;
   line-height: 28px;
   font-size: 38px;
   text-align: center;
 }
-.sub_Article {
+.article_List {
   margin: 10px;
   padding: 20px;
   background-color: #dcdcdc;
   border-radius: 5px;
-  > h2 {
+  h2 {
     margin: 20px;
     font: 2rem "Fira Sans", sans-serif;
   }
-  > p {
+  p {
     margin: 20px;
     font-size: 15px;
     max-width: 600px;
   }
-  .View_Program_button {
-    margin-left: 20px;
-    font-size: 15px;
-    background-color: #ffffff;
-    width: 120px;
-    height: 50px;
-    font-color: #ffffff;
-    border-radius: 5px;
+  .align_right {
+    text-align: right;
+    .View_Program_button {
+      font-size: 15px;
+      background-color: #0000ff;
+      width: 120px;
+      height: 50px;
+      color: #ffffff;
+      border-radius: 5px;
+      .button_link {
+        color: #ffffff;
+      }
+    }
+    .small_button {
+      margin-inline: auto;
+      color: #ffffff;
+      background-color: #007fff;
+      width: 150px;
+      height: 30px;
+      border-radius: 5px;
+    }
   }
 }
 .recruit_info {

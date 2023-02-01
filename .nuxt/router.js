@@ -9,8 +9,10 @@ const _1b6f8c6d = () => interopDefault(import('..\\pages\\apply.vue' /* webpackC
 const _a1da8fec = () => interopDefault(import('..\\pages\\companyInfo.vue' /* webpackChunkName: "pages/companyInfo" */))
 const _2bba5def = () => interopDefault(import('..\\pages\\list.vue' /* webpackChunkName: "pages/list" */))
 const _30ad82e8 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
+const _044c3562 = () => interopDefault(import('..\\pages\\ProgramDetails.vue' /* webpackChunkName: "pages/ProgramDetails" */))
 const _4b272b06 = () => interopDefault(import('..\\pages\\recruit.vue' /* webpackChunkName: "pages/recruit" */))
 const _8ea74d18 = () => interopDefault(import('..\\pages\\recruit_backup.vue' /* webpackChunkName: "pages/recruit_backup" */))
+const _ea822230 = () => interopDefault(import('..\\pages\\recruit copy.vue' /* webpackChunkName: "pages/recruit copy" */))
 const _0fc84dce = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages/reset" */))
 const _93769ed6 = () => interopDefault(import('..\\pages\\account\\earnings.vue' /* webpackChunkName: "pages/account/earnings" */))
 const _5e9d14dc = () => interopDefault(import('..\\pages\\account\\order.vue' /* webpackChunkName: "pages/account/order" */))
@@ -58,6 +60,10 @@ export const routerOptions = {
     component: _30ad82e8,
     name: "login"
   }, {
+    path: "/ProgramDetails",
+    component: _044c3562,
+    name: "ProgramDetails"
+  }, {
     path: "/recruit",
     component: _4b272b06,
     name: "recruit"
@@ -65,6 +71,10 @@ export const routerOptions = {
     path: "/recruit_backup",
     component: _8ea74d18,
     name: "recruit_backup"
+  }, {
+    path: "/recruit%20copy",
+    component: _ea822230,
+    name: "recruit copy"
   }, {
     path: "/reset",
     component: _0fc84dce,

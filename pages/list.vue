@@ -1,181 +1,207 @@
 <template>
   <div class="courselist_page">
     <y-header></y-header>
-    <y-header-list :classList="classList" :fourNow="free" :courseType="'course'"></y-header-list>
+    <y-header-list
+      :classList="classList"
+      :fourNow="free"
+      :courseType="'course'"
+    ></y-header-list>
     <div class="course_content">
       <ul class="clearfix">
+        <!--下面的list section 是调数据的模板案例，请参考-->
         <li v-for="(item, index) in pageObj.list" :key="index">
-          <nuxt-link target="_blank" :to="{name: 'view-id', params: {id: item.id}}" class="course_info">
+          <nuxt-link
+            target="_blank"
+            :to="{ name: 'view-id', params: { id: item.id } }"
+            class="course_info"
+          >
             <div class="img_box">
-              <img class="course_img" :src="item.courseLogo" alt="">
+              <img class="course_img" :src="item.courseLogo" alt="" />
             </div>
-            <p>{{item.courseName}}</p>
+            <p>{{ item.courseName }}</p>
             <span class="price_box" v-if="item.isFree">Free</span>
-            <span class="price_box" v-else>￥{{item.courseOriginal.toFixed(2)}}<span class="font_12 padl_10" v-if="openVip && item.courseOriginal !== item.courseDiscount">SVIP:{{item.courseDiscount ? '￥' + item.courseDiscount.toFixed(2) : 'Free'}}</span></span>
+            <span class="price_box" v-else
+              >￥{{ item.courseOriginal.toFixed(2)
+              }}<span
+                class="font_12 padl_10"
+                v-if="openVip && item.courseOriginal !== item.courseDiscount"
+                >SVIP:{{
+                  item.courseDiscount
+                    ? "￥" + item.courseDiscount.toFixed(2)
+                    : "Free"
+                }}</span
+              ></span
+            >
           </nuxt-link>
         </li>
       </ul>
-      <d-page v-if="pageObj.totalPage > 1" :page="pageObj" @btnClick="getPage"></d-page>
+      <d-page
+        v-if="pageObj.totalPage > 1"
+        :page="pageObj"
+        @btnClick="getPage"
+      ></d-page>
     </div>
     <y-footer></y-footer>
     <right-tap></right-tap>
   </div>
 </template>
 <script>
-import YHeader from '~/components/common/Header'
-import YFooter from '~/components/common/Footer'
-import YHeaderList from '~/components/HeaderList'
-import DPage from '~/components/Page'
-import RightTap from '~/components/common/RightTap'
-import {courseList, courseClass} from '~/api/course.js'
-import {courseChange} from '~/utils/commonfun.js'
+import YHeader from "~/components/common/Header";
+import YFooter from "~/components/common/Footer";
+import YHeaderList from "~/components/HeaderList";
+import DPage from "~/components/Page";
+import RightTap from "~/components/common/RightTap";
+import { courseList, courseClass } from "~/api/course.js";
+import { courseChange } from "~/utils/commonfun.js";
 export default {
-  head () {
+  head() {
     return {
       title: this.$store.state.clientData.name,
       meta: [
-          {
-              hid: 'keywords',
-              name: 'keywords',
-              content: this.$store.state.webInfo.websiteKeyword
-          },
-          {
-              hid: 'description',
-              name: 'description',
-              content: this.$store.state.webInfo.websiteDesc
-          }
-      ]
-    }
+        {
+          hid: "keywords",
+          name: "keywords",
+          content: this.$store.state.webInfo.websiteKeyword,
+        },
+        {
+          hid: "description",
+          name: "description",
+          content: this.$store.state.webInfo.websiteDesc,
+        },
+      ],
+    };
   },
-  data () {
+  data() {
     return {
       openVip: false,
-      free: '',
+      free: "",
       activityList: [],
-      classList: []
-    }
+      classList: [],
+    };
   },
-  async asyncData (context) {
-    let dataObj = {}
-    let clientNo = context.store.state.clientData.no
-    dataObj.clientNo = clientNo
-    dataObj.webInfo = context.store.state.webInfo
-    let categoryId1 = context.query.categoryno1 || ''
-    let categoryId2 = context.query.categoryno2 || ''
-    let categoryId3 = context.query.categoryno3 || ''
-    let isFree = ''
-    let free = 3
-    let isVipFree = ''
+  async asyncData(context) {
+    let dataObj = {};
+    let clientNo = context.store.state.clientData.no;
+    dataObj.clientNo = clientNo;
+    dataObj.webInfo = context.store.state.webInfo;
+    let categoryId1 = context.query.categoryno1 || "";
+    let categoryId2 = context.query.categoryno2 || "";
+    let categoryId3 = context.query.categoryno3 || "";
+    let isFree = "";
+    let free = 3;
+    let isVipFree = "";
     if (context.query.four) {
-      let four = context.query.four
+      let four = context.query.four;
       if (parseInt(four) === 3) {
-        isFree = ''
-        isVipFree = ''
-        free = 3
+        isFree = "";
+        isVipFree = "";
+        free = 3;
       } else if (parseInt(four) === 2) {
-        isFree = 0
-        isVipFree = ''
-        free = 2
+        isFree = 0;
+        isVipFree = "";
+        free = 2;
       } else if (parseInt(four) === 1) {
-        isFree = 1
-        isVipFree = ''
-        free = 1
+        isFree = 1;
+        isVipFree = "";
+        free = 1;
       } else if (parseInt(four) === 4) {
-        isVipFree = 1
-        isFree = ''
-        free = 4
+        isVipFree = 1;
+        isFree = "";
+        free = 4;
       }
     } else {
-      isFree = ''
-      free = 3
+      isFree = "";
+      free = 3;
     }
     let obj = {
-          categoryId1,
-          categoryId2,
-          categoryId3,
-          orgNo: clientNo,
-          pageCurrent: 1,
-          pageSize: 20,
-          isFree,
-          isVipFree
-        }
+      categoryId1,
+      categoryId2,
+      categoryId3,
+      orgNo: clientNo,
+      pageCurrent: 1,
+      pageSize: 20,
+      isFree,
+      isVipFree,
+    };
     let pageObj = {
       list: [],
-      pageCurrent: '',
-      pageSize: '',
-      totalCount: '',
-      totalPage: ''
-    }
+      pageCurrent: "",
+      pageSize: "",
+      totalCount: "",
+      totalPage: "",
+    };
     let classObj = {
       categoryType: 5,
-      orgNo: clientNo
-    }
+      orgNo: clientNo,
+    };
     try {
-      let allData = await Promise.all([courseList(obj), courseClass(classObj)])
+      let allData = await Promise.all([courseList(obj), courseClass(classObj)]);
       // 课程列表
-      let courseData = allData[0]
+      let courseData = allData[0];
       if (courseData.data.data.list.length > 0) {
-        pageObj = courseData.data.data
+        pageObj = courseData.data.data;
       }
       // 分类
-      let classData = await allData[1]
-      let classList = classData.data.data.courseCategoryList || []
-      dataObj.obj = obj
-      dataObj.pageObj = pageObj
-      dataObj.classList = classList
-      dataObj.free = free
-      return dataObj
+      let classData = await allData[1];
+      let classList = classData.data.data.courseCategoryList || [];
+      dataObj.obj = obj;
+      dataObj.pageObj = pageObj;
+      dataObj.classList = classList;
+      dataObj.free = free;
+      return dataObj;
     } catch (e) {
-      context.error({ message: 'User not found', statusCode: 404 })
+      context.error({ message: "User not found", statusCode: 404 });
     }
   },
   watch: {
-    '$route' () {
-      courseChange(this)
-      this.getCourse()
-    }
+    $route() {
+      courseChange(this);
+      this.getCourse();
+    },
   },
   methods: {
-    getCourse () {
+    getCourse() {
       this.$nuxt.$loading.start();
-      courseList(this.obj).then(res => {
-        this.$nuxt.$loading.finish();
-        let result = res.data
-        if (result.code === 200) {
-          if (result.data.list.length > 0) {
-            this.pageObj = result.data;
+      courseList(this.obj)
+        .then((res) => {
+          this.$nuxt.$loading.finish();
+          let result = res.data;
+          if (result.code === 200) {
+            if (result.data.list.length > 0) {
+              this.pageObj = result.data;
+            } else {
+              this.pageObj = {};
+            }
           } else {
-            this.pageObj = {}
+            this.$msgBox({
+              content: result.msg,
+              isShowCancelBtn: false,
+            });
+            this.pageObj = {};
           }
-        } else {
-          this.$msgBox({
-            content: result.msg,
-            isShowCancelBtn: false
-          })
-          this.pageObj = {}
-        }
-      }).catch(() => {
-        this.$nuxt.$loading.finish();
-        this.$msgBox({
-          content: '数据加载失败，请稍后重试',
-          isShowCancelBtn: false
         })
-      })
+        .catch(() => {
+          this.$nuxt.$loading.finish();
+          this.$msgBox({
+            content: "数据加载失败，请稍后重试",
+            isShowCancelBtn: false,
+          });
+        });
     },
-    getPage (int) {
+    getPage(int) {
       window.scrollTo(0, 0);
       this.obj.pageCurrent = int;
       this.getCourse();
-    }
+    },
   },
-  mounted () {
+  mounted() {
     if (this.webInfo && this.webInfo.isEnableVip) {
-      this.openVip = true
+      this.openVip = true;
     }
-    courseChange(this)
+    courseChange(this);
     if (this.$route.query.free) {
-      this.obj.isFree = 1
-      this.free = 1
+      this.obj.isFree = 1;
+      this.free = 1;
     }
     // this.getCourse()
   },
@@ -184,9 +210,9 @@ export default {
     YFooter,
     YHeaderList,
     DPage,
-    RightTap
-  }
-}
+    RightTap,
+  },
+};
 </script>
 <style lang="scss" rel="stylesheet/scss">
 .courselist_page {
@@ -218,7 +244,7 @@ export default {
       color: #000;
       box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.2);
       transform: translateY(-2px);
-      transition: all .3s;
+      transition: all 0.3s;
     }
     .img_box {
       position: relative;

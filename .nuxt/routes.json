@@ -30,6 +30,12 @@
     "chunkName": "pages/login"
   },
   {
+    "name": "ProgramDetails",
+    "path": "/ProgramDetails",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\ProgramDetails.vue",
+    "chunkName": "pages/ProgramDetails"
+  },
+  {
     "name": "recruit",
     "path": "/recruit",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit.vue",
@@ -40,6 +46,12 @@
     "path": "/recruit_backup",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit_backup.vue",
     "chunkName": "pages/recruit_backup"
+  },
+  {
+    "name": "recruit copy",
+    "path": "/recruit%20copy",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit copy.vue",
+    "chunkName": "pages/recruit copy"
   },
   {
     "name": "reset",
