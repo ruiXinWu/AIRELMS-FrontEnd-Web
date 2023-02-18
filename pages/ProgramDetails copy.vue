@@ -219,6 +219,12 @@ export default {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+.blue_subtitle1 {
+  color: #2359d7;
+  font-size: 28px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 .sub_title_AIRE {
   padding: 30px 100px 30px;
   font-weight: 550;

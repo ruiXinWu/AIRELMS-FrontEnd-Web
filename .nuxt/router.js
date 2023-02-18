@@ -9,7 +9,7 @@ const _1b6f8c6d = () => interopDefault(import('..\\pages\\apply.vue' /* webpackC
 const _a1da8fec = () => interopDefault(import('..\\pages\\companyInfo.vue' /* webpackChunkName: "pages/companyInfo" */))
 const _2bba5def = () => interopDefault(import('..\\pages\\list.vue' /* webpackChunkName: "pages/list" */))
 const _30ad82e8 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
-const _044c3562 = () => interopDefault(import('..\\pages\\ProgramDetails.vue' /* webpackChunkName: "pages/ProgramDetails" */))
+const _19076756 = () => interopDefault(import('..\\pages\\ProgramDetails copy.vue' /* webpackChunkName: "pages/ProgramDetails copy" */))
 const _4b272b06 = () => interopDefault(import('..\\pages\\recruit.vue' /* webpackChunkName: "pages/recruit" */))
 const _8ea74d18 = () => interopDefault(import('..\\pages\\recruit_backup.vue' /* webpackChunkName: "pages/recruit_backup" */))
 const _ea822230 = () => interopDefault(import('..\\pages\\recruit copy.vue' /* webpackChunkName: "pages/recruit copy" */))
@@ -24,6 +24,7 @@ const _1b648c5c = () => interopDefault(import('..\\pages\\account\\teacher\\chec
 const _0d65ed41 = () => interopDefault(import('..\\pages\\account\\teacher\\course.vue' /* webpackChunkName: "pages/account/teacher/course" */))
 const _e0518032 = () => interopDefault(import('..\\pages\\account\\teacher\\period.vue' /* webpackChunkName: "pages/account/teacher/period" */))
 const _4170adc9 = () => interopDefault(import('..\\pages\\account\\teacher\\praxis.vue' /* webpackChunkName: "pages/account/teacher/praxis" */))
+const _53e35302 = () => interopDefault(import('..\\pages\\ProgramView\\_id.vue' /* webpackChunkName: "pages/ProgramView/_id" */))
 const _a08a0b4e = () => interopDefault(import('..\\pages\\terrace\\_id.vue' /* webpackChunkName: "pages/terrace/_id" */))
 const _04965cb4 = () => interopDefault(import('..\\pages\\view\\_id.vue' /* webpackChunkName: "pages/view/_id" */))
 const _6705dfd1 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
@@ -60,9 +61,9 @@ export const routerOptions = {
     component: _30ad82e8,
     name: "login"
   }, {
-    path: "/ProgramDetails",
-    component: _044c3562,
-    name: "ProgramDetails"
+    path: "/ProgramDetails%20copy",
+    component: _19076756,
+    name: "ProgramDetails copy"
   }, {
     path: "/recruit",
     component: _4b272b06,
@@ -119,6 +120,10 @@ export const routerOptions = {
     path: "/account/teacher/praxis",
     component: _4170adc9,
     name: "account-teacher-praxis"
+  }, {
+    path: "/ProgramView/:id?",
+    component: _53e35302,
+    name: "ProgramView-id"
   }, {
     path: "/terrace/:id?",
     component: _a08a0b4e,

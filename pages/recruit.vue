@@ -58,7 +58,7 @@
           >
             <h2>{{ item.programName }}</h2>
             <p>{{ item.programLogo }}</p>
-            <!--<nuxt-link target="_blank" :to="{name: 'view-id', params: {id: item.id}}" class="course_info">-->
+            <!--<nuxt-link target="_self" :to="{name: 'view-id', params: {id: item.id}}" class="course_info">-->
             <div class="align_right">
               <span style="float: left; margin-left: 18px">
                 <span>
@@ -68,7 +68,10 @@
                 </span>
               </span>
               <button class="View_Program_button" type="button">
-                <nuxt-link :to="{ name: 'ProgramDetails' }" class="button_link"
+                <nuxt-link
+                  target="_self"
+                  :to="{ name: 'ProgramView-id', params: { id: item.id } }"
+                  class="button_link"
                   >View Program</nuxt-link
                 >
               </button>
