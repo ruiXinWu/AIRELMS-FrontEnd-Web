@@ -16,6 +16,8 @@ import { createStore } from './store.js'
 import nuxt_plugin_axios_477d26a2 from 'nuxt_plugin_axios_477d26a2' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_message_2594a886 from 'nuxt_plugin_message_2594a886' // Source: ..\\plugins\\message.js (mode: 'all')
 import nuxt_plugin_dragging_a28c35dc from 'nuxt_plugin_dragging_a28c35dc' // Source: ..\\plugins\\dragging.js (mode: 'all')
+import nuxt_plugin_bootstrapvue_7a18ce66 from 'nuxt_plugin_bootstrapvue_7a18ce66' // Source: ..\\plugins\\bootstrap-vue.js (mode: 'all')
+import nuxt_plugin_fontawesome_b8db358e from 'nuxt_plugin_fontawesome_b8db358e' // Source: ..\\plugins\\fontawesome.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -222,6 +224,14 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_dragging_a28c35dc === 'function') {
     await nuxt_plugin_dragging_a28c35dc(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_bootstrapvue_7a18ce66 === 'function') {
+    await nuxt_plugin_bootstrapvue_7a18ce66(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_fontawesome_b8db358e === 'function') {
+    await nuxt_plugin_fontawesome_b8db358e(app.context, inject)
   }
 
   // Lock enablePreview in context

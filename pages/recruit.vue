@@ -8,9 +8,17 @@
           <h1 class="title_AIRE">Our Programs</h1>
         </div>
         <hr class="hr_program" />
-        <form>
-          <div>
-            <input type="search" id="mySearch" placeholder="Search" />
+        <form @submit.prevent="submitForm">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" @click="submitForm">
+              <span class="input-group-text">
+                <font-awesome-icon
+                  icon="fa-solid fa-magnifying-glass"
+                  class="img-magnifier"
+                />
+              </span>
+            </div>
+            <input type="text" class="form-control" v-model="inputContent" />
           </div>
         </form>
         <!--这里是模拟后端拿到搜索预设值list数据-->
@@ -87,7 +95,10 @@
 import YHeader from "~/components/common/Header";
 import YFooter from "~/components/common/Footer";
 import YSide from "~/components/TerraceSide";
-import { programList } from "~/api/program.js";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { programList, ProgramSearch } from "~/api/program.js";
 export default {
   head() {
     return {
@@ -109,6 +120,7 @@ export default {
   data() {
     return {
       webInfo: this.$store.state.webInfo,
+      inputContent: "",
     };
   },
   async asyncData(context) {
@@ -157,8 +169,40 @@ export default {
     }
   },
   methods: {
-    goApply() {
-      this.$router.push({ name: "apply" });
+    submitForm() {
+      // Your submit form logic here
+      console.log(this.inputContent);
+      let searchObj = {
+        programName: this.inputContent,
+      };
+      console.log(searchObj);
+      this.$nuxt.$loading.start();
+      ProgramSearch(searchObj)
+        .then((res) => {
+          this.$nuxt.$loading.finish();
+          let searchResult = res.data;
+          console.log(searchResult);
+          if (searchResult.code === 200) {
+            if (searchResult.data.list.length > 0) {
+              this.pageObj = searchResult.data;
+            } else {
+              this.pageObj = {};
+            }
+          } else {
+            this.$msgBox({
+              content: "error occur in ProgramSearch",
+              isShowCancelBtn: false,
+            });
+            this.pageObj = {};
+          }
+        })
+        .catch(() => {
+          this.$nuxt.$loading.finish();
+          this.$msgBox({
+            content: "error occur in ProgramSearch",
+            isShowCancelBtn: false,
+          });
+        });
     },
   },
   mounted() {
@@ -292,6 +336,12 @@ export default {
     margin-top: 10px;
     padding-left: 10px;
   }
+}
+.img-magnifier {
+  width: 20px;
+}
+.input-group-text {
+  padding-bottom: 10px;
 }
 .apply_btn {
   display: inline-block;

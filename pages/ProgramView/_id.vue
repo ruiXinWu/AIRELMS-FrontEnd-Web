@@ -5,16 +5,11 @@
       <div class="person_content">
         <div>
           <!--<i class="arrow left"></i>-->
-          <h1 class="title_AIRE">Machine Learning Engineer</h1>
+          <h1 class="title_AIRE">{{ programObj.programName }}</h1>
         </div>
         <div>
           <h2 class="sub_title_AIRE">
-            Machine Learning Engineer is the best, the best of best, You’ll
-            master the skills needed to design better data models, build data
-            infrastructures. Get the Skills You Need to Launch Your Career.
-            Apply for the Data Engineering Bootcamp! Scholarship
-            Opportunities。Become a Data Engineer。Last Week to Apply the best
-            of the best
+            {{ programObj.description }}
           </h2>
         </div>
         <ul class="link_list">
@@ -135,7 +130,7 @@
 import YHeader from "~/components/common/Header";
 import YFooter from "~/components/common/Footer";
 import YSide from "~/components/TerraceSide";
-import { ProgramCourseList } from "~/api/program.js";
+import { ProgramCourseList, ProgramDetail } from "~/api/program.js";
 export default {
   head() {
     return {
@@ -171,6 +166,9 @@ export default {
       pageSize: 30,
       programId: context.params.id,
     };
+    let objDetail = {
+      id: context.params.id,
+    };
     let courseObj = {
       courselist: [],
       pageCurrent: "",
@@ -183,12 +181,26 @@ export default {
       console.log("has token");
       console.log(context.params.id);
       //有token info
-      let allData = await Promise.all([ProgramCourseList(obj)]);
-      console.log("allData returned from backend");
-      console.log(allData);
-      let programDetailData = allData[0];
-      if (programDetailData.data.data.list.length > 0) {
-        courseObj = programDetailData.data.data;
+      try {
+        let programDetailData = await Promise.all([ProgramDetail(objDetail)]);
+        console.log("programDetailData returned from backend");
+        console.log(programDetailData[0]);
+        let programObj = "";
+        if (programDetailData[0].data.data !== undefined) {
+          programObj = programDetailData[0].data.data;
+          console.log("This is programObj");
+          console.log(programObj);
+        }
+        dataObj.programObj = programObj;
+      } catch (e) {
+        console.log("we catched error when fetching programDetailData");
+      }
+      let courseData = await Promise.all([ProgramCourseList(obj)]);
+      console.log("courseData returned from backend");
+      console.log(courseData);
+      let programCourseData = courseData[0];
+      if (programCourseData.data.data.list.length > 0) {
+        courseObj = programCourseData.data.data;
         console.log("This is courseObj");
         console.log(courseObj);
       }

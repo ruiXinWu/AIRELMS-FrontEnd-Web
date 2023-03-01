@@ -1,16 +1,21 @@
 import http from "./method.js";
 
-// Program列表
+// Program列表(recruit page)
 export const programList = (params = {}) => {
   return http().post("/course/api/program/list", params);
 };
 
-// // Program详情(未登录)(go to backend and find the return type)
-// export const programDetail = (params = {}) => {
-//   return http().post("/course/api/program/view", params);
-// };
+// Program searchbyname
+export const ProgramSearch = (params = {}) => {
+  return http().post("/course/api/program/searchbyname", params);
+};
 
-// Program详情(登录后)
+// Program detail详情(无需登录)
+export const ProgramDetail = (params = {}) => {
+  return http().post("/course/api/program/searchbyid", params);
+};
+
+// Program courseList详情(无需登录)
 export const ProgramCourseList = (params = {}) => {
   return http().post("/course/api/course/programsearch", params);
 };
