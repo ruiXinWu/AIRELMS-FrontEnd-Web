@@ -39,21 +39,29 @@
             <a href="/">Electric Vehicles</a>
           </li>
         </ul>
-        <ul class="link_list">
-          <li style="display: inline; margin: 10px; color: #ede4e4">
-            <a style="color: #390ee6" href="/">All</a>
+        <ul id="program_List" class="link_list">
+          <li
+            v-for="(item, index) in pageObj.list"
+            :key="index"
+            class="subList"
+          >
+            <nuxt-link
+              target="_self"
+              :to="{ name: 'ProgramView-id', params: { id: item.id } }"
+              class="button_link"
+              >{{ item.programName }}</nuxt-link
+            >
           </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Machine Learning Engineer</a>
-          </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Deep Learning Engineer</a>
-          </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Software Engineer</a>
-          </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Machanial Engineer</a>
+        </ul>
+        <ul id="skill_List" class="link_list">
+          <li
+            v-for="(item, index) in listObj.list"
+            :key="index"
+            class="subList"
+          >
+            <button @click="handleSkillButtonClick(item.skillName)">
+              {{ item.skillName }}
+            </button>
           </li>
         </ul>
       </div>
@@ -98,7 +106,12 @@ import YSide from "~/components/TerraceSide";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { programList, ProgramSearch } from "~/api/program.js";
+import {
+  programList,
+  ProgramSearch,
+  skillList,
+  getbyskillname,
+} from "~/api/program.js";
 export default {
   head() {
     return {
@@ -124,6 +137,8 @@ export default {
     };
   },
   async asyncData(context) {
+    //In Vue.js, asyncData is a special method that is used for loading
+    //asynchronous data for a page or component before it is rendered
     let dataObj = {};
     let clientNo = context.store.state.clientData.no;
     dataObj.clientNo = clientNo;
@@ -139,12 +154,15 @@ export default {
       totalCount: "",
       totalPage: "",
     };
+    let listObj = {
+      list: [],
+    };
     //let classObj = {
     //  categoryType: 5,
     //  orgNo: clientNo
     //}
     try {
-      let allData = await Promise.all([programList(obj)]);
+      let allData = await Promise.all([programList(obj), skillList()]);
       console.log("This is allData");
       console.log(allData);
       // Program列表
@@ -159,6 +177,16 @@ export default {
       // 分类
       //let classData = await allData[1];
       //let classList = classData.data.data.courseCategoryList || [];
+      // skill 列表
+      let skillData = allData[1];
+      console.log("This is skillData");
+      console.log(skillData);
+      if (skillData.data.data.list.length > 0) {
+        listObj = skillData.data.data;
+        console.log("This is listObj");
+        console.log(listObj);
+      }
+      dataObj.listObj = listObj;
       dataObj.obj = obj;
       dataObj.pageObj = pageObj;
       console.log("This is dataObj");
@@ -200,6 +228,41 @@ export default {
           this.$nuxt.$loading.finish();
           this.$msgBox({
             content: "error occur in ProgramSearch",
+            isShowCancelBtn: false,
+          });
+        });
+    },
+    handleSkillButtonClick(skillName) {
+      // 等吴睿昕后端getByskillId实现
+      console.log(skillName);
+      let skillObj = {
+        skillName: skillName,
+      };
+      console.log(skillObj);
+      this.$nuxt.$loading.start();
+      getbyskillname(skillObj)
+        .then((res) => {
+          this.$nuxt.$loading.finish();
+          let searchResult = res.data;
+          console.log(searchResult);
+          if (searchResult.code === 200) {
+            if (searchResult.data.list.length > 0) {
+              this.pageObj = searchResult.data;
+            } else {
+              this.pageObj = {};
+            }
+          } else {
+            this.$msgBox({
+              content: "error occur in ProgramSearch",
+              isShowCancelBtn: false,
+            });
+            this.pageObj = {};
+          }
+        })
+        .catch(() => {
+          this.$nuxt.$loading.finish();
+          this.$msgBox({
+            content: "error occur in getbyskillname",
             isShowCancelBtn: false,
           });
         });
@@ -263,7 +326,17 @@ export default {
   display: block;
   font-weight: bold;
   font: 15px Arial;
-  font-color: blue;
+  color: blue;
+}
+.subList {
+  display: inline;
+  margin: 10px;
+  button {
+    color: #ffffff;
+    background-color: #4f82e1;
+    padding: 3px;
+    border-radius: 1px;
+  }
 }
 .person_content1 {
   width: 1152px;

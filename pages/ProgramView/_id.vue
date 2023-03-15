@@ -120,6 +120,45 @@
               </li>
             </ul>
           </div>
+          <hr class="hr_program" />
+          <div class="course_content">
+            <h1 class="blue_subtitle1">Projects</h1>
+            <ul class="clearfix">
+              <li>
+                <nuxt-link
+                  target="_self"
+                  :to="{ name: 'projectview-id', params: { id: 12345 } }"
+                  class="course_info"
+                >
+                  <div class="img_box">
+                    <img
+                      class="course_img"
+                      src="https://csci571.com/hw/hw3/images/mountain.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <p>Project1</p>
+                </nuxt-link>
+              </li>
+
+              <!-- <li v-for="(item, index) in projectObj.list" :key="index">
+                <nuxt-link
+                  target="_blank"
+                  :to="{ name: 'view-id', params: { id: item.id } }"
+                  class="course_info"
+                >
+                  <div class="img_box">
+                    <img
+                      class="course_img"
+                      src=""
+                      alt=""
+                    />
+                  </div>
+                  <p>{{item.projectName}}</p>
+                </nuxt-link>
+              </li> -->
+            </ul>
+          </div>
         </article>
       </div>
     </div>
@@ -321,7 +360,7 @@ export default {
   display: block;
   font-weight: bold;
   font: 15px Arial;
-  font-color: blue;
+  color: blue;
 }
 .person_content1 {
   width: 1152px;

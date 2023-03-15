@@ -5,6 +5,11 @@ export const programList = (params = {}) => {
   return http().post("/course/api/program/list", params);
 };
 
+//skill列表(recruit page)
+export const skillList = (params = {}) => {
+  return http().post("/course/api/programskill/listskill", params);
+};
+
 // Program searchbyname
 export const ProgramSearch = (params = {}) => {
   return http().post("/course/api/program/searchbyname", params);
@@ -18,4 +23,9 @@ export const ProgramDetail = (params = {}) => {
 // Program courseList详情(无需登录)
 export const ProgramCourseList = (params = {}) => {
   return http().post("/course/api/course/programsearch", params);
+};
+
+// Program getbyskillname
+export const getbyskillname = (params = {}) => {
+  return http().post("/course/api/programskill/getbyskillname", params);
 };

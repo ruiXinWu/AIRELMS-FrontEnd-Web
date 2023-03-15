@@ -25,6 +25,7 @@ const _0d65ed41 = () => interopDefault(import('..\\pages\\account\\teacher\\cour
 const _e0518032 = () => interopDefault(import('..\\pages\\account\\teacher\\period.vue' /* webpackChunkName: "pages/account/teacher/period" */))
 const _4170adc9 = () => interopDefault(import('..\\pages\\account\\teacher\\praxis.vue' /* webpackChunkName: "pages/account/teacher/praxis" */))
 const _53e35302 = () => interopDefault(import('..\\pages\\ProgramView\\_id.vue' /* webpackChunkName: "pages/ProgramView/_id" */))
+const _76db9c8d = () => interopDefault(import('..\\pages\\projectview\\_id.vue' /* webpackChunkName: "pages/projectview/_id" */))
 const _a08a0b4e = () => interopDefault(import('..\\pages\\terrace\\_id.vue' /* webpackChunkName: "pages/terrace/_id" */))
 const _04965cb4 = () => interopDefault(import('..\\pages\\view\\_id.vue' /* webpackChunkName: "pages/view/_id" */))
 const _6705dfd1 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
@@ -124,6 +125,10 @@ export const routerOptions = {
     path: "/ProgramView/:id?",
     component: _53e35302,
     name: "ProgramView-id"
+  }, {
+    path: "/projectview/:id?",
+    component: _76db9c8d,
+    name: "projectview-id"
   }, {
     path: "/terrace/:id?",
     component: _a08a0b4e,
