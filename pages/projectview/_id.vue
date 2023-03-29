@@ -42,6 +42,37 @@ export default {
       webInfo: this.$store.state.webInfo,
     };
   },
+  async asyncData(context) {
+    // generate projectObj
+    console.log("first render the page");
+    let tk = context.store.state.tokenInfo;
+    let dataObj = {};
+    let clientNo = context.store.state.clientData.no;
+    dataObj.clientNo = clientNo;
+    dataObj.webInfo = context.store.state.webInfo;
+    let categoryId = {
+      id: context.params.id,
+    };
+    console.log("enter try");
+    console.log(context.params.id);
+    try {
+      let projectDetailData = await Promise.all([ProjectDetail(categoryId)]);
+      console.log("projectDetailData returned from backend");
+      console.log(projectDetailData[0]);
+      let projectObj = "";
+      if (projectDetailData[0].data.data !== undefined) {
+        projectObj = projectDetailData[0].data.data;
+        console.log("This is projectObj");
+        console.log(projectObj);
+      }
+      dataObj.projectObj = projectObj;
+    } catch (e) {
+      console.log("we catched error when fetching projectDetailData");
+    }
+    console.log("This is dataObj");
+    console.log(dataObj);
+    return dataObj;
+  },
   methods: {
     goApply() {
       this.$router.push({ name: "apply" });

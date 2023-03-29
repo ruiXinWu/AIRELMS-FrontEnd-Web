@@ -22,21 +22,25 @@
           </div>
         </form>
         <!--这里是模拟后端拿到搜索预设值list数据-->
-        <ul class="link_list">
-          <li style="display: inline; margin: 10px; color: #ede4e4">
-            <a style="color: #390ee6" href="/">All</a>
-          </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Advanced Robotics</a>
-          </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Artificial Intelligence</a>
-          </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Autonomous Driving</a>
-          </li>
-          <li style="display: inline; margin: 10px">
-            <a href="/">Electric Vehicles</a>
+        <!-- category list -->
+        <ul id="category_list" class="link_list">
+          <li
+            v-for="(item, index) in cateObj.list"
+            :key="index"
+            class="subList"
+          >
+            <button
+              class="buttonToLink"
+              style="
+                color: blue;
+                background-color: white;
+                border: none;
+                text-decoration: underline;
+              "
+              @click="handleCategoryButtonClick(item.id)"
+            >
+              {{ item.categoryName }}
+            </button>
           </li>
         </ul>
         <ul id="program_List" class="link_list">
@@ -73,13 +77,19 @@
             class="article_List"
           >
             <h2>{{ item.programName }}</h2>
-            <p>{{ item.programLogo }}</p>
+            <p>{{ item.description.slice(0, 150) + "..." }}</p>
             <!--<nuxt-link target="_self" :to="{name: 'view-id', params: {id: item.id}}" class="course_info">-->
             <div class="align_right">
+              <!-- put skillList here -->
               <span style="float: left; margin-left: 18px">
                 <span>
-                  <button class="small_button" type="button">
-                    {{ item.id }}
+                  <button
+                    class="small_button"
+                    type="button"
+                    v-for="(skillItem, index) in item.skillDTOList"
+                    @click="handleSkillButtonClick(skillItem.name)"
+                  >
+                    {{ skillItem.name }}
                   </button>
                 </span>
               </span>
@@ -111,6 +121,8 @@ import {
   ProgramSearch,
   skillList,
   getbyskillname,
+  categoryList,
+  getByCategoryId,
 } from "~/api/program.js";
 export default {
   head() {
@@ -157,12 +169,19 @@ export default {
     let listObj = {
       list: [],
     };
+    let cateObj = {
+      list: [],
+    };
     //let classObj = {
     //  categoryType: 5,
     //  orgNo: clientNo
     //}
     try {
-      let allData = await Promise.all([programList(obj), skillList()]);
+      let allData = await Promise.all([
+        programList(obj),
+        skillList(),
+        categoryList(),
+      ]);
       console.log("This is allData");
       console.log(allData);
       // Program列表
@@ -177,7 +196,16 @@ export default {
       // 分类
       //let classData = await allData[1];
       //let classList = classData.data.data.courseCategoryList || [];
-      // skill 列表
+      // category
+      let categoryData = allData[2];
+      console.log("This is CategoryData");
+      console.log(categoryData);
+      if (categoryData.data.data.list.length > 0) {
+        cateObj = categoryData.data.data;
+        console.log("This is cateObj");
+        console.log(cateObj);
+      }
+      //skill 列表
       let skillData = allData[1];
       console.log("This is skillData");
       console.log(skillData);
@@ -186,6 +214,7 @@ export default {
         console.log("This is listObj");
         console.log(listObj);
       }
+      dataObj.cateObj = cateObj;
       dataObj.listObj = listObj;
       dataObj.obj = obj;
       dataObj.pageObj = pageObj;
@@ -253,7 +282,42 @@ export default {
             }
           } else {
             this.$msgBox({
-              content: "error occur in ProgramSearch",
+              content: "error occur in getbyskillname",
+              isShowCancelBtn: false,
+            });
+            this.pageObj = {};
+          }
+        })
+        .catch(() => {
+          this.$nuxt.$loading.finish();
+          this.$msgBox({
+            content: "error occur in getbyskillname",
+            isShowCancelBtn: false,
+          });
+        });
+    },
+    // the getByCategoryId method
+    handleCategoryButtonClick(categoryId) {
+      console.log(categoryId);
+      let categoryObj = {
+        categoryId: categoryId,
+      };
+      console.log(categoryObj);
+      this.$nuxt.$loading.start();
+      getByCategoryId(categoryObj)
+        .then((res) => {
+          this.$nuxt.$loading.finish();
+          let searchResult = res.data;
+          console.log(searchResult);
+          if (searchResult.code === 200) {
+            if (searchResult.data.list.length > 0) {
+              this.pageObj = searchResult.data;
+            } else {
+              this.pageObj = {};
+            }
+          } else {
+            this.$msgBox({
+              content: "error occur in getByCategoryId method",
               isShowCancelBtn: false,
             });
             this.pageObj = {};
@@ -328,6 +392,15 @@ export default {
   font: 15px Arial;
   color: blue;
 }
+.buttonToLink {
+  color: #0000ff;
+  background-color: white;
+  border: none;
+}
+// .buttonToLink:hover {
+//   background: none;
+//   text-decoration: underline;
+// }
 .subList {
   display: inline;
   margin: 10px;
@@ -357,7 +430,7 @@ export default {
 .article_List {
   margin: 10px;
   padding: 20px;
-  background-color: #dcdcdc;
+  background-color: #cbd4e499;
   border-radius: 5px;
   h2 {
     margin: 20px;
@@ -382,12 +455,13 @@ export default {
       }
     }
     .small_button {
-      margin-inline: auto;
+      margin-right: 15px;
       color: #ffffff;
       background-color: #007fff;
-      width: 150px;
+      min-width: fit-content;
       height: 30px;
       border-radius: 5px;
+      font-size: small;
     }
   }
 }

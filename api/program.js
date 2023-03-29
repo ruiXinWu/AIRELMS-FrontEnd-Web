@@ -29,3 +29,11 @@ export const ProgramCourseList = (params = {}) => {
 export const getbyskillname = (params = {}) => {
   return http().post("/course/api/programskill/getbyskillname", params);
 };
+// Program List Category
+export const categoryList = (params = {}) => {
+  return http().post("/course/api/CategoryProgram/listcategory", params);
+};
+// Program getByCategoryId
+export const getByCategoryId = (params = {}) => {
+  return http().post("/course/api/CategoryProgram/getbycategoryid", params);
+};

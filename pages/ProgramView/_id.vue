@@ -13,22 +13,14 @@
           </h2>
         </div>
         <ul class="link_list">
-          <li style="display: inline; margin: 3px; color: #ffffff">
-            <button class="small_button" type="button">Machine Learning</button>
-          </li>
-          <li style="display: inline; margin: 3px; color: #ede4e4">
-            <button class="small_button" type="button">NLP</button>
-          </li>
-          <li style="display: inline; margin: 3px; color: #ede4e4">
-            <button class="small_button" type="button">Deep Learning</button>
-          </li>
-          <li style="display: inline; margin: 3px; color: #ede4e4">
+          <li
+            style="display: inline; margin: 3px; color: #ffffff"
+            v-for="(skillItem, index) in programObj.skillDTOList"
+            :key="index"
+          >
             <button class="small_button" type="button">
-              Artificial Intelligence
+              {{ skillItem.name }}
             </button>
-          </li>
-          <li style="display: inline; margin: 3px; color: #ede4e4">
-            <button class="small_button" type="button">Face recruitInfo</button>
           </li>
         </ul>
         <hr class="hr_program" />
@@ -456,12 +448,13 @@ export default {
   }
 }
 .small_button {
-  margin-inline: auto;
+  margin-right: 15px;
   color: #ffffff;
   background-color: #007fff;
-  width: 150px;
+  min-width: fit-content;
   height: 30px;
   border-radius: 5px;
+  font-size: small;
 }
 .recruit_info {
   margin-top: 40px;
