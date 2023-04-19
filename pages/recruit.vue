@@ -4,6 +4,13 @@
     <div class="person_body clearfix">
       <!--<y-side :type="'jszm'" :showSide="'zm'"></y-side>-->
       <div class="person_content">
+        <button
+          class="back_button"
+          style="position: absolute; left: 5px; top: 5px"
+          @click="refreshPage"
+        >
+          Go Back
+        </button>
         <div>
           <h1 class="title_AIRE">Our Programs</h1>
         </div>
@@ -35,7 +42,7 @@
                 color: blue;
                 background-color: white;
                 border: none;
-                text-decoration: underline;
+                text-decoration: none;
               "
               @click="handleCategoryButtonClick(item.id)"
             >
@@ -63,7 +70,7 @@
             :key="index"
             class="subList"
           >
-            <button @click="handleSkillButtonClick(item.skillName)">
+            <button @click="handleSkillButtonClick(item.skillId)">
               {{ item.skillName }}
             </button>
           </li>
@@ -87,7 +94,7 @@
                     class="small_button"
                     type="button"
                     v-for="(skillItem, index) in item.skillDTOList"
-                    @click="handleSkillButtonClick(skillItem.name)"
+                    @click="handleSkillButtonClick(skillItem.id)"
                   >
                     {{ skillItem.name }}
                   </button>
@@ -123,6 +130,8 @@ import {
   getbyskillname,
   categoryList,
   getByCategoryId,
+  getfullbyskillid,
+  searchfullbyname,
 } from "~/api/program.js";
 export default {
   head() {
@@ -234,7 +243,7 @@ export default {
       };
       console.log(searchObj);
       this.$nuxt.$loading.start();
-      ProgramSearch(searchObj)
+      searchfullbyname(searchObj)
         .then((res) => {
           this.$nuxt.$loading.finish();
           let searchResult = res.data;
@@ -261,15 +270,15 @@ export default {
           });
         });
     },
-    handleSkillButtonClick(skillName) {
+    handleSkillButtonClick(skillId) {
       // 等吴睿昕后端getByskillId实现
-      console.log(skillName);
+      console.log(skillId);
       let skillObj = {
-        skillName: skillName,
+        skillId: skillId,
       };
       console.log(skillObj);
       this.$nuxt.$loading.start();
-      getbyskillname(skillObj)
+      getfullbyskillid(skillObj)
         .then((res) => {
           this.$nuxt.$loading.finish();
           let searchResult = res.data;
@@ -331,6 +340,10 @@ export default {
           });
         });
     },
+    refreshPage() {
+      console.log("refresh the page");
+      location.reload();
+    },
   },
   mounted() {
     this.webInfo = this.$store.state.webInfo;
@@ -343,12 +356,16 @@ export default {
 };
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
+a {
+  text-decoration: none;
+}
 .person_body {
   width: 1200px;
   margin: 30px auto 0;
   min-height: 1200px;
 }
 .person_content {
+  position: relative;
   width: 1152px;
   float: right;
   background: #fff;
@@ -430,8 +447,10 @@ export default {
 .article_List {
   margin: 10px;
   padding: 20px;
-  background-color: #cbd4e499;
-  border-radius: 5px;
+  background-color: white;
+  border-radius: 6px;
+  border-color: #070709;
+  border-width: 10px;
   h2 {
     margin: 20px;
     font: 2rem "Fira Sans", sans-serif;

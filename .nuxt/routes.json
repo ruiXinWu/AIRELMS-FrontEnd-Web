@@ -49,13 +49,6 @@
     "_name": "_4b272b06"
   },
   {
-    "name": "recruit_backup",
-    "path": "/recruit_backup",
-    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit_backup.vue",
-    "chunkName": "pages/recruit_backup",
-    "_name": "_8ea74d18"
-  },
-  {
     "name": "recruit copy",
     "path": "/recruit%20copy",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit copy.vue",
@@ -70,6 +63,13 @@
     "_name": "_0fc84dce"
   },
   {
+    "name": "account-accomplishments",
+    "path": "/account/accomplishments",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\accomplishments.vue",
+    "chunkName": "pages/account/accomplishments",
+    "_name": "_65cbd3b6"
+  },
+  {
     "name": "account-earnings",
     "path": "/account/earnings",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\earnings.vue",
@@ -77,11 +77,18 @@
     "_name": "_93769ed6"
   },
   {
-    "name": "account-order",
-    "path": "/account/order",
-    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\order.vue",
-    "chunkName": "pages/account/order",
-    "_name": "_5e9d14dc"
+    "name": "account-myprograms",
+    "path": "/account/myprograms",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\myprograms.vue",
+    "chunkName": "pages/account/myprograms",
+    "_name": "_86628bf2"
+  },
+  {
+    "name": "account-myprograms copy",
+    "path": "/account/myprograms%20copy",
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\myprograms copy.vue",
+    "chunkName": "pages/account/myprograms copy",
+    "_name": "_e01a74c4"
   },
   {
     "name": "account-reset",

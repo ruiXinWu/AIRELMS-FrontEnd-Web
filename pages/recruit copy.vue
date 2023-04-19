@@ -4,6 +4,12 @@
     <div class="person_body clearfix">
       <!--<y-side :type="'jszm'" :showSide="'zm'"></y-side>-->
       <div class="person_content">
+        <button
+          class="back_button"
+          style="position: absolute; left: 5px; top: 5px"
+        >
+          Back
+        </button>
         <div>
           <h1 class="title_AIRE">Our Programs</h1>
         </div>
@@ -223,6 +229,7 @@ export default {
   min-height: 1200px;
 }
 .person_content {
+  position: relative;
   width: 1152px;
   float: right;
   background: #fff;
@@ -264,7 +271,7 @@ export default {
   display: block;
   font-weight: bold;
   font: 15px Arial;
-  font-color: blue;
+  color: blue;
 }
 .person_content1 {
   width: 1152px;

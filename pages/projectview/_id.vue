@@ -1,15 +1,16 @@
 <template>
   <div>
     <y-header :active="'zmzx'"></y-header>
-    <div class="container">
-      <h1>Natural Language Processing - Project1</h1>
+    <div
+      class="container"
+      :style="{ backgroundImage: 'url(' + projectObj.projectPicture + ')' }"
+    >
+      <h1>{{ projectObj.projectName }}</h1>
+      <p class="description">{{ projectObj.projectDescription }}</p>
       <button class="View_Program_button" type="button">
-        <nuxt-link
-          target="_self"
-          :to="{ name: 'companyInfo' }"
-          class="button_link"
+        <a target="_blank" :href="projectObj.projectUrl" class="button_link"
           >Start this project
-        </nuxt-link>
+        </a>
       </button>
     </div>
     <y-footer></y-footer>
@@ -19,6 +20,7 @@
 import YHeader from "~/components/common/Header";
 import YFooter from "~/components/common/Footer";
 import YSide from "~/components/TerraceSide";
+import { searchbyprojectid } from "~/api/program.js";
 export default {
   head() {
     return {
@@ -50,13 +52,13 @@ export default {
     let clientNo = context.store.state.clientData.no;
     dataObj.clientNo = clientNo;
     dataObj.webInfo = context.store.state.webInfo;
-    let categoryId = {
-      id: context.params.id,
+    let projectId = {
+      projectId: context.params.id,
     };
     console.log("enter try");
     console.log(context.params.id);
     try {
-      let projectDetailData = await Promise.all([ProjectDetail(categoryId)]);
+      let projectDetailData = await Promise.all([searchbyprojectid(projectId)]);
       console.log("projectDetailData returned from backend");
       console.log(projectDetailData[0]);
       let projectObj = "";
@@ -90,18 +92,31 @@ export default {
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
 .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: flex-start;
+  position: relative;
   height: 100vh;
   padding: 20px;
-  background-color: rgb(210, 203, 203);
+  // background-color: rgb(210, 203, 203);
   h1 {
-    margin: 80px 0 0 20px;
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    margin: 80px 0 0 30px;
+  }
+  p {
+    position: absolute;
+    top: 35%;
+    left: 100px;
+    max-width: 30%;
   }
   button {
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
     margin: 0 20px 20px 0;
-    align-self: flex-end;
+    // align-self: flex-end;
     font-size: 15px;
     background-color: #0000ff;
     width: 180px;

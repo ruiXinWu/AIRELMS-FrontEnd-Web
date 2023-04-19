@@ -26,67 +26,28 @@
         <hr class="hr_program" />
         <!--这里是模拟后端拿到button预设值list数据-->
       </div>
+      <!-- below is the office hour part -->
       <div class="person_content1">
         <article class="super_Article">
           <h1 class="blue_subtitle">Office Hour</h1>
-          <p style="margin-left: 30px; margin-bottom: 40px; font-size: 15px">
-            Machine learning engineers act as critical members of the data
-            science team. Their tasks involve researching, building, and
-            designing
-          </p>
           <ul class="article_List">
-            <li>
+            <li v-for="(item, index) in officeHourObj.list" :key="index">
               <article class="sub_Article">
-                <h2>Professor Alex Ling</h2>
+                <h2 style="font-weight: bond">{{ item.lecturerName }}</h2>
                 <div style="margin-left: 20px; position: relative">
                   <span style="display: inline-block">
-                    <img
-                      class="circle_pic"
-                      src="https://csci571.com/hw/hw3/images/shark.jpg"
-                    />
+                    <img class="circle_pic" :src="item.headImgUrl" />
                   </span>
-                  <span class="introduction">
-                    Machine learning engineers act as critical members of the
-                    data science team. Their tasks involve researching,
-                    building, and designing the artificial intelligence
-                    responsible for machine learning and maintaining and
-                    improving existing artificial intelligence systems.
-                  </span>
+                  <span class="introduction"
+                    ><p>{{ removePTags(item.introduce) }}</p></span
+                  >
                   <span class="align_right">
                     <button class="View_Program_button" type="button">
-                      <nuxt-link
-                        :to="{ name: 'companyInfo' }"
+                      <a
+                        target="_blank"
+                        :href="item.officeHourUrl"
                         class="button_link"
-                        >Sign Up</nuxt-link
-                      >
-                    </button>
-                  </span>
-                </div>
-              </article>
-            </li>
-            <li>
-              <article class="sub_Article">
-                <h2>Professor Jared Yu</h2>
-                <div style="margin-left: 20px; position: relative">
-                  <span style="display: inline-block">
-                    <img
-                      class="circle_pic"
-                      src="https://csci571.com/hw/hw3/images/lake.jpg"
-                    />
-                  </span>
-                  <span class="introduction">
-                    Machine learning engineers act as critical members of the
-                    data science team. Their tasks involve researching,
-                    building, and designing the artificial intelligence
-                    responsible for machine learning and maintaining and
-                    improving existing artificial intelligence systems.
-                  </span>
-                  <span class="align_right">
-                    <button class="View_Program_button" type="button">
-                      <nuxt-link
-                        :to="{ name: 'companyInfo' }"
-                        class="button_link"
-                        >Sign Up</nuxt-link
+                        >Sign Up</a
                       >
                     </button>
                   </span>
@@ -116,20 +77,20 @@
           <div class="course_content">
             <h1 class="blue_subtitle1">Projects</h1>
             <ul class="clearfix">
-              <li>
+              <li v-for="(item, index) in projectObj.list" :key="index">
                 <nuxt-link
                   target="_self"
-                  :to="{ name: 'projectview-id', params: { id: 12345 } }"
+                  :to="{
+                    name: 'projectview-id',
+                    params: { id: item.projectId },
+                  }"
                   class="course_info"
                 >
                   <div class="img_box">
-                    <img
-                      class="course_img"
-                      src="https://csci571.com/hw/hw3/images/mountain.jpg"
-                      alt=""
-                    />
+                    <img class="course_img" :src="item.projectPicture" alt="" />
+                    <!-- the colon (:) is a shorthand for the v-bind directive. The v-bind directive allows you to bind an attribute to an expression -->
                   </div>
-                  <p>Project1</p>
+                  <p>{{ item.projectName }}</p>
                 </nuxt-link>
               </li>
 
@@ -161,7 +122,12 @@
 import YHeader from "~/components/common/Header";
 import YFooter from "~/components/common/Footer";
 import YSide from "~/components/TerraceSide";
-import { ProgramCourseList, ProgramDetail } from "~/api/program.js";
+import {
+  ProgramCourseList,
+  ProgramDetail,
+  getprojectbyprogram,
+  getofficehourbyprogramid,
+} from "~/api/program.js";
 export default {
   head() {
     return {
@@ -200,6 +166,9 @@ export default {
     let objDetail = {
       id: context.params.id,
     };
+    let objOH = {
+      id: context.params.id,
+    };
     let courseObj = {
       courselist: [],
       pageCurrent: "",
@@ -226,19 +195,41 @@ export default {
       } catch (e) {
         console.log("we catched error when fetching programDetailData");
       }
-      let courseData = await Promise.all([ProgramCourseList(obj)]);
-      console.log("courseData returned from backend");
-      console.log(courseData);
-      let programCourseData = courseData[0];
+      let courseAndProjectData = await Promise.all([
+        ProgramCourseList(obj),
+        getprojectbyprogram(objDetail),
+        getofficehourbyprogramid(objOH),
+      ]);
+      console.log("courseAndProjectData returned from backend");
+      console.log(courseAndProjectData);
+      let programCourseData = courseAndProjectData[0];
       if (programCourseData.data.data.list.length > 0) {
         courseObj = programCourseData.data.data;
         console.log("This is courseObj");
         console.log(courseObj);
       }
+      //getprojectbyprogram
+      let projectData = courseAndProjectData[1];
+      let projectObj = "";
+      if (projectData.data.data.list.length > 0) {
+        projectObj = projectData.data.data;
+        console.log("This is projectObj");
+        console.log(projectObj);
+      }
+      //getofficehourbyprogramid
+      let officeHourData = courseAndProjectData[2];
+      let officeHourObj = "";
+      if (officeHourData.data.data.list.length > 0) {
+        officeHourObj = officeHourData.data.data;
+        console.log("This is officeHourObj");
+        console.log(officeHourObj);
+      }
       console.log("This is courseObj");
       console.log(courseObj);
       dataObj.obj = obj;
       dataObj.courseObj = courseObj;
+      dataObj.projectObj = projectObj;
+      dataObj.officeHourObj = officeHourObj;
       console.log("This is dataObj");
       console.log(dataObj);
       return dataObj;
@@ -250,6 +241,9 @@ export default {
   methods: {
     goApply() {
       this.$router.push({ name: "apply" });
+    },
+    removePTags(str) {
+      return str.replace(/^<p>|<\/p>$/g, "");
     },
   },
   mounted() {

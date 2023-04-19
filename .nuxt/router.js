@@ -11,11 +11,12 @@ const _2bba5def = () => interopDefault(import('..\\pages\\list.vue' /* webpackCh
 const _30ad82e8 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
 const _19076756 = () => interopDefault(import('..\\pages\\ProgramDetails copy.vue' /* webpackChunkName: "pages/ProgramDetails copy" */))
 const _4b272b06 = () => interopDefault(import('..\\pages\\recruit.vue' /* webpackChunkName: "pages/recruit" */))
-const _8ea74d18 = () => interopDefault(import('..\\pages\\recruit_backup.vue' /* webpackChunkName: "pages/recruit_backup" */))
 const _ea822230 = () => interopDefault(import('..\\pages\\recruit copy.vue' /* webpackChunkName: "pages/recruit copy" */))
 const _0fc84dce = () => interopDefault(import('..\\pages\\reset.vue' /* webpackChunkName: "pages/reset" */))
+const _65cbd3b6 = () => interopDefault(import('..\\pages\\account\\accomplishments.vue' /* webpackChunkName: "pages/account/accomplishments" */))
 const _93769ed6 = () => interopDefault(import('..\\pages\\account\\earnings.vue' /* webpackChunkName: "pages/account/earnings" */))
-const _5e9d14dc = () => interopDefault(import('..\\pages\\account\\order.vue' /* webpackChunkName: "pages/account/order" */))
+const _86628bf2 = () => interopDefault(import('..\\pages\\account\\myprograms.vue' /* webpackChunkName: "pages/account/myprograms" */))
+const _e01a74c4 = () => interopDefault(import('..\\pages\\account\\myprograms copy.vue' /* webpackChunkName: "pages/account/myprograms copy" */))
 const _60a92313 = () => interopDefault(import('..\\pages\\account\\reset.vue' /* webpackChunkName: "pages/account/reset" */))
 const _737d468d = () => interopDefault(import('..\\pages\\account\\study.vue' /* webpackChunkName: "pages/account/study" */))
 const _ab2beec8 = () => interopDefault(import('..\\pages\\account\\teacher\\index.vue' /* webpackChunkName: "pages/account/teacher/index" */))
@@ -70,10 +71,6 @@ export const routerOptions = {
     component: _4b272b06,
     name: "recruit"
   }, {
-    path: "/recruit_backup",
-    component: _8ea74d18,
-    name: "recruit_backup"
-  }, {
     path: "/recruit%20copy",
     component: _ea822230,
     name: "recruit copy"
@@ -82,13 +79,21 @@ export const routerOptions = {
     component: _0fc84dce,
     name: "reset"
   }, {
+    path: "/account/accomplishments",
+    component: _65cbd3b6,
+    name: "account-accomplishments"
+  }, {
     path: "/account/earnings",
     component: _93769ed6,
     name: "account-earnings"
   }, {
-    path: "/account/order",
-    component: _5e9d14dc,
-    name: "account-order"
+    path: "/account/myprograms",
+    component: _86628bf2,
+    name: "account-myprograms"
+  }, {
+    path: "/account/myprograms%20copy",
+    component: _e01a74c4,
+    name: "account-myprograms copy"
   }, {
     path: "/account/reset",
     component: _60a92313,

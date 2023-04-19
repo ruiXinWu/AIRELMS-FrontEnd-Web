@@ -3,19 +3,23 @@
     <div class="h_top" v-if="!hideTop">
       <div class="h_top_body">
         <ul class="top_list clearfix" v-if="userInfo">
-          <li><a :href="mainUrl + '/recruit'">Hiring</a></li>
           <li v-if="isTeacher">
             <nuxt-link :to="{ name: 'account-teacher' }"
               >Instructor Center</nuxt-link
             >
           </li>
           <li class="s_left">
-            <nuxt-link :to="{ name: 'account-order' }">My Order</nuxt-link>
+            <nuxt-link :to="{ name: 'account-myprograms' }"
+              >My Programs</nuxt-link
+            >
           </li>
           <li class="s_left">
-            <nuxt-link :to="{ name: 'account' }">{{
-              userInfo.mobile
-            }}</nuxt-link>
+            <nuxt-link :to="{ name: 'account' }">Account</nuxt-link>
+          </li>
+          <li class="s_left">
+            <nuxt-link :to="{ name: 'account-accomplishments' }"
+              >Accomplishments</nuxt-link
+            >
           </li>
           <li><a href="javascript:" @click="signOut">Exit</a></li>
         </ul>
@@ -58,6 +62,9 @@
 <script>
 import { serviceInfo, getNav } from "~/api/main.js";
 import bq from "bq-static";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   props: {
     active: {
@@ -115,12 +122,16 @@ export default {
 <style lang="scss" rel="stylesheet/scss" scoped>
 .h_header {
   background: #fff;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 .h_top {
   background: rgb(7, 95, 237);
   .h_top_body {
     width: 1200px;
-    height: 30px;
+    min-height: 30px;
     margin: 0px auto;
   }
 }

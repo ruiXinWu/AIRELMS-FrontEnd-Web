@@ -37,3 +37,28 @@ export const categoryList = (params = {}) => {
 export const getByCategoryId = (params = {}) => {
   return http().post("/course/api/CategoryProgram/getbycategoryid", params);
 };
+//4.4
+// Program getfullbyskillid
+export const getfullbyskillid = (params = {}) => {
+  return http().post("/course/api/programskill/getfullbyskillid", params);
+};
+
+// Program searchfullbyname
+export const searchfullbyname = (params = {}) => {
+  return http().post("/course/api/program/searchfullbyname", params);
+};
+
+// Program getprojectbyprogram
+export const getprojectbyprogram = (params = {}) => {
+  return http().post("/course/api/project/getprojectbyprogram", params);
+};
+
+// Program searchbyprojectid
+export const searchbyprojectid = (params = {}) => {
+  return http().post("/course/api/project/searchbyprojectid", params);
+};
+
+// Program getofficehourbyprogramid
+export const getofficehourbyprogramid = (params = {}) => {
+  return http().post("/course/api/program/getofficehourbyprogramid", params);
+};
