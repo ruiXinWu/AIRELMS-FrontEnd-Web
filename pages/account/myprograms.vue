@@ -20,7 +20,42 @@
         </ul>
         <div class="person_info">
           <ul>
-            <li>
+            <li v-for="(item, index) in pageObj.list" :key="index">
+              <div class="card mb-3" style="min-width: 80%">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img
+                      src="https://img.ltn.com.tw/Upload/news/600/2023/02/04/phpcarjdT.jpg"
+                      class="img-fluid rounded-start"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ item.programName }}</h5>
+                      <p class="card-text">
+                        <small class="text-body-secondary">Dr. Jared Yu</small>
+                      </p>
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        v-if="num == 0"
+                      >
+                        View Study Progress
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        v-if="num == 1"
+                      >
+                        Resume
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- <li>
               <div class="card mb-3" style="min-width: 80%">
                 <div class="row g-0">
                   <div class="col-md-4">
@@ -89,42 +124,7 @@
                   </div>
                 </div>
               </div>
-            </li>
-            <li>
-              <div class="card mb-3" style="min-width: 80%">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img
-                      src="https://img.ltn.com.tw/Upload/news/600/2023/02/04/phpcarjdT.jpg"
-                      class="img-fluid rounded-start"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Machine Learning Engineer</h5>
-                      <p class="card-text">
-                        <small class="text-body-secondary">Dr. Jared Yu</small>
-                      </p>
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-lg"
-                        v-if="this.num == 0"
-                      >
-                        View Study Progress
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-lg"
-                        v-if="this.num == 1"
-                      >
-                        Resume
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+            </li> -->
           </ul>
         </div>
         <!-- <div class="notdata" v-if="notdata">
@@ -183,6 +183,7 @@ import YFooter from "~/components/common/Footer";
 import YSide from "~/components/account/Side";
 import DPaymodal from "~/components/account/PayModal";
 import { orderList, orderClose } from "~/api/account/course.js";
+import { programList } from "~/api/account/user.js";
 import DPage from "~/components/Page";
 import { myHttp } from "~/utils/myhttp.js";
 export default {
@@ -192,11 +193,7 @@ export default {
       showPay: false,
       payData: null,
       notdata: true,
-      obj: {
-        orderStatus: 0,
-        pageCurrent: 1,
-        pageSize: 20,
-      },
+      obj: {},
       pageObj: {
         pageCurrent: "",
         pageSize: "",
@@ -214,17 +211,17 @@ export default {
       this.num = int;
       this.obj.orderStatus = int;
       this.obj.pageCurrent = 1;
-      this.getOrderList();
+      this.getProgramList();
     },
     getPage: function (int) {
       this.obj.pageCurrent = int;
-      this.getOrderList();
+      this.getProgramList();
     },
-    getOrderList() {
-      this.obj.lecturerUserNo = this.$store.state.userInfo.userNo;
+    getProgramList() {
+      this.obj.userId = this.$store.state.userInfo.userNo;
       myHttp
         .call(this, {
-          method: orderList,
+          method: programList,
           params: this.obj,
         })
         .then((res) => {
@@ -249,21 +246,21 @@ export default {
             edit: false,
           })
             .then(async (val) => {
-              this.getOrderList();
+              this.getProgramList();
             })
             .catch(() => {
-              this.getOrderList();
+              this.getProgramList();
             });
         });
     },
   },
   mounted() {
     this.obj = {
-      orderStatus: 0,
-      pageCurrent: 1,
-      pageSize: 10,
+      // orderStatus: 0,
+      // pageCurrent: 1,
+      // pageSize: 10,
     };
-    this.getOrderList();
+    this.getProgramList();
   },
   components: {
     YHeader,

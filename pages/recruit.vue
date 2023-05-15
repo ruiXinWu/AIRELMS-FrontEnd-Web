@@ -447,7 +447,7 @@ a {
 .article_List {
   margin: 10px;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(213, 188, 234);
   border-radius: 6px;
   border-color: #070709;
   border-width: 10px;
