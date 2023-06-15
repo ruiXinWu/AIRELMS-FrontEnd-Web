@@ -4,6 +4,11 @@ import http from "../method.js";
 export const programList = (params = {}) => {
   return http().post("/user/api/userprogram/getuserprogrambyuserid", params);
 };
+
+export const getprogramcoursebyuserid = (params = {}) => {
+  return http().post("/user/api/userprogram/getprogramcoursebyuserid", params);
+};
+
 // 修改用户信息
 export const updateUserEducationInf = (params = {}) => {
   return http().post("/user/auth/user/ext/update", params);

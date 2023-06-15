@@ -20,7 +20,10 @@
         </ul>
         <div class="person_info">
           <ul>
-            <li v-for="(item, index) in pageObj.list" :key="index">
+            <li
+              v-for="(item, index) in pageObj.programCourseDTOList"
+              :key="index"
+            >
               <div class="card mb-3" style="min-width: 80%">
                 <div class="row g-0">
                   <div class="col-md-4">
@@ -40,8 +43,23 @@
                         type="button"
                         class="btn btn-primary btn-lg"
                         v-if="num == 0"
+                        @click="
+                          $set(visibilityFlags, index, !visibilityFlags[index])
+                        "
                       >
                         View Study Progress
+                        <font-awesome-icon
+                          style="height: 20px; width: 20px"
+                          icon="chevron-down"
+                          size="2xs"
+                          v-if="!visibilityFlags[index]"
+                        />
+                        <font-awesome-icon
+                          style="height: 20px; width: 20px"
+                          icon="chevron-up"
+                          size="2xs"
+                          v-if="visibilityFlags[index]"
+                        />
                       </button>
                       <button
                         type="button"
@@ -53,127 +71,50 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </li>
-            <!-- <li>
-              <div class="card mb-3" style="min-width: 80%">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img
-                      src="https://img.ltn.com.tw/Upload/news/600/2023/02/04/phpcarjdT.jpg"
-                      class="img-fluid rounded-start"
-                      alt="..."
-                    />
-                  </div>
+                <!-- The newly added extended card -->
+                <div class="row g-0" v-if="visibilityFlags[index]">
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">Machine Learning Engineer</h5>
-                      <p class="card-text">
-                        <small class="text-body-secondary">Dr. Jared Yu</small>
-                      </p>
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-lg"
-                        v-if="this.num == 0"
-                      >
-                        View Study Progress
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-lg"
-                        v-if="this.num == 1"
-                      >
-                        Resume
-                      </button>
+                      <h5 class="program_title">Courses</h5>
+                      <ul>
+                        <li
+                          v-for="(subItem, index) in item.courseListDTO
+                            .courseList"
+                          :key="index"
+                        >
+                          <h6 style="font-weight: 700; margin-left: 10px">
+                            {{ subItem.courseName
+                            }}<span
+                              class="badge bg-secondary"
+                              style="margin-left: 5px"
+                              v-if="subItem.courseStatus == 0"
+                              >Not started</span
+                            ><span
+                              class="badge bg-secondary"
+                              style="margin-left: 5px"
+                              v-if="subItem.courseStatus == 1"
+                              >In Progress</span
+                            >
+                            <span
+                              class="badge bg-secondary"
+                              style="margin-left: 5px"
+                              v-if="subItem.courseStatus == 2"
+                              >Finished</span
+                            >
+                          </h6>
+                          <!-- <p class="card-title">{{ subItem.courseName }}</p>
+                          <p>{{ subItem.courseStatus }}</p> -->
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-            <li>
-              <div class="card mb-3" style="min-width: 80%">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img
-                      src="https://img.ltn.com.tw/Upload/news/600/2023/02/04/phpcarjdT.jpg"
-                      class="img-fluid rounded-start"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Machine Learning Engineer</h5>
-                      <p class="card-text">
-                        <small class="text-body-secondary">Dr. Jared Yu</small>
-                      </p>
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-lg"
-                        v-if="this.num == 0"
-                      >
-                        View Study Progress
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-lg"
-                        v-if="this.num == 1"
-                      >
-                        Resume
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li> -->
           </ul>
         </div>
-        <!-- <div class="notdata" v-if="notdata">
-          <i class="iconfont">&#xe6be;</i>No Data Yet
-        </div> -->
-        <!-- <div class="person_info" v-if="!notdata">
-          <div
-            class="order_content"
-            v-for="(item, index) in pageObj.list"
-            :key="index"
-          >
-            <div class="order_title clearfix">
-              <span class="order_num">订单号：{{ item.orderNo }}</span>
-              <span class="time">{{ item.gmtCreate }}</span>
-            </div>
-            <div class="order_body clearfix">
-              <div class="body_left clearfix">
-                <div class="img_box fl" v-if="item.courseLogo">
-                  <img :src="item.courseLogo" alt="" />
-                </div>
-                <p class="fl">
-                  {{ item.courseName }}
-                </p>
-              </div>
-              <ul class="body_right clearfix">
-                <li v-if="item.orderStatus == 2">
-                  <nuxt-link
-                    :to="{ name: 'view-id', params: { id: item.courseId } }"
-                    class="go_btn"
-                    >进入学习</nuxt-link
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <d-page
-            v-if="pageObj.totalPage > 1 && !notdata"
-            :page="pageObj"
-            @btnClick="getPage"
-          ></d-page>
-        </div> -->
       </div>
     </div>
-    <!-- <d-paymodal
-      class=""
-      :data="payData"
-      @hidefun="showPay = false"
-      v-if="showPay"
-    ></d-paymodal> -->
     <y-footer></y-footer>
   </div>
 </template>
@@ -183,7 +124,7 @@ import YFooter from "~/components/common/Footer";
 import YSide from "~/components/account/Side";
 import DPaymodal from "~/components/account/PayModal";
 import { orderList, orderClose } from "~/api/account/course.js";
-import { programList } from "~/api/account/user.js";
+import { programList, getprogramcoursebyuserid } from "~/api/account/user.js";
 import DPage from "~/components/Page";
 import { myHttp } from "~/utils/myhttp.js";
 export default {
@@ -194,6 +135,8 @@ export default {
       payData: null,
       notdata: true,
       obj: {},
+      isDivVisible: false,
+      visibilityFlags: [],
       pageObj: {
         pageCurrent: "",
         pageSize: "",
@@ -211,26 +154,29 @@ export default {
       this.num = int;
       this.obj.orderStatus = int;
       this.obj.pageCurrent = 1;
-      this.getProgramList();
+      this.getProgramAndCourseList();
     },
     getPage: function (int) {
       this.obj.pageCurrent = int;
-      this.getProgramList();
+      this.getProgramAndCourseList();
     },
-    getProgramList() {
+    getProgramAndCourseList() {
       this.obj.userId = this.$store.state.userInfo.userNo;
       myHttp
         .call(this, {
-          method: programList,
+          method: getprogramcoursebyuserid,
           params: this.obj,
         })
         .then((res) => {
           this.pageObj = res.data;
-          if (res.data.list.length > 0) {
+          if (res.data.programCourseDTOList.length > 0) {
             this.notdata = false;
           } else {
             this.notdata = true;
           }
+          this.visibilityFlags = this.pageObj.programCourseDTOList.map(
+            () => false
+          );
         });
     },
     closeOrder(orderNo) {
@@ -246,10 +192,10 @@ export default {
             edit: false,
           })
             .then(async (val) => {
-              this.getProgramList();
+              this.getProgramAndCourseList();
             })
             .catch(() => {
-              this.getProgramList();
+              this.getProgramAndCourseList();
             });
         });
     },
@@ -260,7 +206,7 @@ export default {
       // pageCurrent: 1,
       // pageSize: 10,
     };
-    this.getProgramList();
+    this.getProgramAndCourseList();
   },
   components: {
     YHeader,
@@ -280,13 +226,13 @@ a {
 .card-body {
   margin-top: 7%;
   color: black;
+  position: relative;
   .card-text {
     margin-top: 5%;
   }
   button {
     position: absolute;
     right: 5%;
-    bottom: 5%;
   }
 }
 .card {
@@ -416,5 +362,8 @@ a {
 .page {
   margin-bottom: 20px;
   margin-top: 10px;
+}
+.my-icon {
+  font-size: 20px;
 }
 </style>

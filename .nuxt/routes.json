@@ -3,188 +3,161 @@
     "name": "account",
     "path": "/account",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\index.vue",
-    "chunkName": "pages/account/index",
-    "_name": "_903295d4"
+    "chunkName": "pages/account/index"
   },
   {
     "name": "apply",
     "path": "/apply",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\apply.vue",
-    "chunkName": "pages/apply",
-    "_name": "_1b6f8c6d"
+    "chunkName": "pages/apply"
   },
   {
     "name": "companyInfo",
     "path": "/companyInfo",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\companyInfo.vue",
-    "chunkName": "pages/companyInfo",
-    "_name": "_a1da8fec"
+    "chunkName": "pages/companyInfo"
   },
   {
     "name": "list",
     "path": "/list",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\list.vue",
-    "chunkName": "pages/list",
-    "_name": "_2bba5def"
+    "chunkName": "pages/list"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_30ad82e8"
+    "chunkName": "pages/login"
   },
   {
     "name": "ProgramDetails copy",
     "path": "/ProgramDetails%20copy",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\ProgramDetails copy.vue",
-    "chunkName": "pages/ProgramDetails copy",
-    "_name": "_19076756"
+    "chunkName": "pages/ProgramDetails copy"
   },
   {
     "name": "recruit",
     "path": "/recruit",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit.vue",
-    "chunkName": "pages/recruit",
-    "_name": "_4b272b06"
+    "chunkName": "pages/recruit"
   },
   {
     "name": "recruit copy",
     "path": "/recruit%20copy",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\recruit copy.vue",
-    "chunkName": "pages/recruit copy",
-    "_name": "_ea822230"
+    "chunkName": "pages/recruit copy"
   },
   {
     "name": "reset",
     "path": "/reset",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\reset.vue",
-    "chunkName": "pages/reset",
-    "_name": "_0fc84dce"
+    "chunkName": "pages/reset"
   },
   {
     "name": "account-accomplishments",
     "path": "/account/accomplishments",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\accomplishments.vue",
-    "chunkName": "pages/account/accomplishments",
-    "_name": "_65cbd3b6"
+    "chunkName": "pages/account/accomplishments"
   },
   {
     "name": "account-earnings",
     "path": "/account/earnings",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\earnings.vue",
-    "chunkName": "pages/account/earnings",
-    "_name": "_93769ed6"
+    "chunkName": "pages/account/earnings"
   },
   {
     "name": "account-myprograms",
     "path": "/account/myprograms",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\myprograms.vue",
-    "chunkName": "pages/account/myprograms",
-    "_name": "_86628bf2"
+    "chunkName": "pages/account/myprograms"
   },
   {
     "name": "account-myprograms copy",
     "path": "/account/myprograms%20copy",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\myprograms copy.vue",
-    "chunkName": "pages/account/myprograms copy",
-    "_name": "_e01a74c4"
+    "chunkName": "pages/account/myprograms copy"
   },
   {
     "name": "account-reset",
     "path": "/account/reset",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\reset.vue",
-    "chunkName": "pages/account/reset",
-    "_name": "_60a92313"
+    "chunkName": "pages/account/reset"
   },
   {
     "name": "account-study",
     "path": "/account/study",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\study.vue",
-    "chunkName": "pages/account/study",
-    "_name": "_737d468d"
+    "chunkName": "pages/account/study"
   },
   {
     "name": "account-teacher",
     "path": "/account/teacher",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\index.vue",
-    "chunkName": "pages/account/teacher/index",
-    "_name": "_ab2beec8"
+    "chunkName": "pages/account/teacher/index"
   },
   {
     "name": "account-teacher-add",
     "path": "/account/teacher/add",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\add.vue",
-    "chunkName": "pages/account/teacher/add",
-    "_name": "_2c1dbd6b"
+    "chunkName": "pages/account/teacher/add"
   },
   {
     "name": "account-teacher-check",
     "path": "/account/teacher/check",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\check.vue",
-    "chunkName": "pages/account/teacher/check",
-    "_name": "_1b648c5c"
+    "chunkName": "pages/account/teacher/check"
   },
   {
     "name": "account-teacher-course",
     "path": "/account/teacher/course",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\course.vue",
-    "chunkName": "pages/account/teacher/course",
-    "_name": "_0d65ed41"
+    "chunkName": "pages/account/teacher/course"
   },
   {
     "name": "account-teacher-period",
     "path": "/account/teacher/period",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\period.vue",
-    "chunkName": "pages/account/teacher/period",
-    "_name": "_e0518032"
+    "chunkName": "pages/account/teacher/period"
   },
   {
     "name": "account-teacher-praxis",
     "path": "/account/teacher/praxis",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\account\\\\teacher\\\\praxis.vue",
-    "chunkName": "pages/account/teacher/praxis",
-    "_name": "_4170adc9"
+    "chunkName": "pages/account/teacher/praxis"
   },
   {
     "name": "ProgramView-id",
     "path": "/ProgramView/:id?",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\ProgramView\\\\_id.vue",
-    "chunkName": "pages/ProgramView/_id",
-    "_name": "_53e35302"
+    "chunkName": "pages/ProgramView/_id"
   },
   {
     "name": "projectview-id",
     "path": "/projectview/:id?",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\projectview\\\\_id.vue",
-    "chunkName": "pages/projectview/_id",
-    "_name": "_76db9c8d"
+    "chunkName": "pages/projectview/_id"
   },
   {
     "name": "terrace-id",
     "path": "/terrace/:id?",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\terrace\\\\_id.vue",
-    "chunkName": "pages/terrace/_id",
-    "_name": "_a08a0b4e"
+    "chunkName": "pages/terrace/_id"
   },
   {
     "name": "view-id",
     "path": "/view/:id?",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\view\\\\_id.vue",
-    "chunkName": "pages/view/_id",
-    "_name": "_04965cb4"
+    "chunkName": "pages/view/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_6705dfd1"
+    "chunkName": "pages/index"
   },
   {
     "name": "custom",
     "path": "*",
-    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\index.vue",
-    "_name": "_6705dfd1"
+    "component": "C:\\\\Users\\\\HP\\\\Desktop\\\\AIREDeploy\\\\AIRELMS-FrontEnd-Web_new\\\\pages\\\\index.vue"
   }
 ]
